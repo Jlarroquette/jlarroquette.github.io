@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jo Nathan — Official Links, Music & Videos</title>
+<meta name="description" content="Jo Nathan — Louisiana musician. Dubstep, trance, electric guitar. Originals, covers, and the crown crew. All links, music, and videos in one place.">
+<meta property="og:title" content="Jo Nathan — Official Links, Music & Videos">
+<meta property="og:description" content="Dubstep • Trance • Electric Guitar. Originals & covers from Louisiana.">
+<meta property="og:image" content="https://jlarroquette.github.io/jo-nathan.jpg">
+<meta property="og:url" content="https://jlarroquette.github.io/">
+<meta name="theme-color" content="#0a0a14">
+<style>
+  :root{
+    --bg:#0a0a14; --panel:#12121f; --panel2:#17172a;
+    --ink:#f2f2f8; --dim:#a7a7c2;
+    --cyan:#22d3ee; --magenta:#e879f9; --gold:#f5c451;
+    --radius:16px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    background:
+      radial-gradient(900px 500px at 15% -5%, rgba(34,211,238,.14), transparent 60%),
+      radial-gradient(900px 500px at 85% 0%, rgba(232,121,249,.12), transparent 60%),
+      var(--bg);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.55;
+    padding:32px 16px 56px;
+  }
+  .wrap{max-width:680px;margin:0 auto}
+  header{text-align:center;margin-bottom:28px}
+  .photo{
+    width:168px;height:168px;border-radius:50%;object-fit:cover;object-position:top;
+    border:3px solid transparent;
+    background:linear-gradient(var(--bg),var(--bg)) padding-box,
+               linear-gradient(135deg,var(--cyan),var(--magenta),var(--gold)) border-box;
+    box-shadow:0 0 34px rgba(34,211,238,.35), 0 0 60px rgba(232,121,249,.18);
+  }
+  .crown{font-size:26px;display:block;margin-top:10px}
+  h1{
+    font-size:44px;letter-spacing:3px;margin-top:2px;font-weight:900;
+    background:linear-gradient(90deg,var(--cyan),#fff,var(--magenta));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .tagline{color:var(--dim);font-size:16px;margin-top:6px}
+  .tagline b{color:var(--gold);font-weight:600}
+  section{margin-top:30px}
+  h2{
+    font-size:14px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);
+    margin-bottom:12px;display:flex;align-items:center;gap:10px;
+  }
+  h2::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(255,255,255,.25),transparent)}
+  .links{display:flex;flex-direction:column;gap:10px}
+  .btn{
+    display:flex;align-items:center;gap:14px;
+    background:var(--panel);border:1px solid rgba(255,255,255,.09);
+    border-radius:var(--radius);padding:15px 18px;
+    color:var(--ink);text-decoration:none;font-size:17px;font-weight:600;
+    transition:transform .12s ease, border-color .12s ease, background .12s ease;
+  }
+  .btn:hover{transform:translateY(-2px);background:var(--panel2);border-color:rgba(34,211,238,.55)}
+  .btn .ic{font-size:22px;width:28px;text-align:center}
+  .btn .sub{display:block;font-size:13px;font-weight:400;color:var(--dim)}
+  .btn .go{margin-left:auto;color:var(--dim);font-size:18px}
+  .btn.hero-link{
+    background:linear-gradient(90deg,rgba(34,211,238,.18),rgba(232,121,249,.18));
+    border-color:rgba(245,196,81,.5);
+  }
+  .card{background:var(--panel);border:1px solid rgba(255,255,255,.09);border-radius:var(--radius);padding:18px}
+  .card p{color:#d9d9e8}
+  .card p + p{margin-top:10px}
+  iframe{border:0;border-radius:12px;width:100%}
+  .video{margin-bottom:14px}
+  .video iframe{aspect-ratio:16/9;height:auto}
+  .video .cap{font-size:13px;color:var(--dim);margin-top:6px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{
+    background:var(--panel2);border:1px solid rgba(255,255,255,.1);
+    padding:7px 13px;border-radius:999px;font-size:14px;
+  }
+  .chip.new{border-color:var(--gold);color:var(--gold)}
+  .board{display:flex;flex-direction:column;gap:10px}
+  .post{
+    background:var(--panel);border:1px solid rgba(255,255,255,.09);
+    border-left:3px solid var(--gold);border-radius:12px;padding:14px 16px;
+  }
+  .post .meta{font-size:12px;letter-spacing:2px;color:var(--gold);margin-bottom:4px;text-transform:uppercase}
+  .post p{color:#d9d9e8}
+  .crew{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .mate{background:var(--panel);border:1px solid rgba(255,255,255,.09);border-radius:var(--radius);padding:14px 16px}
+  .mate .nm{font-weight:800;font-size:16px}
+  .mate .ds{color:var(--dim);font-size:13.5px;margin-top:2px}
+  .covers{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .tile{display:block;text-decoration:none;color:var(--ink)}
+  .tile img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:12px;border:1px solid rgba(255,255,255,.12);display:block;transition:transform .12s ease, border-color .12s ease}
+  .tile:hover img{transform:translateY(-3px);border-color:rgba(245,196,81,.6)}
+  .tile span{display:block;font-size:12.5px;font-weight:600;text-align:center;margin-top:6px;color:#d9d9e8}
+  .note{font-size:13px;color:var(--dim);text-align:center;margin-top:12px}
+  @media (max-width:520px){ .covers{grid-template-columns:repeat(2,1fr)} }
+  footer{text-align:center;color:var(--dim);font-size:13px;margin-top:42px}
+  footer .crown2{color:var(--gold)}
+  @media (max-width:520px){ h1{font-size:34px} .crew{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <img class="photo" src="jo-nathan.jpg" alt="Jo Nathan">
+    <span class="crown">👑</span>
+    <h1>JO NATHAN</h1>
+    <p class="tagline">Dubstep • Trance • Electric Guitar<br>
+    Originals &amp; covers from <b>Louisiana</b></p>
+  </header>
+
+  <section>
+    <h2>Listen</h2>
+    <div class="covers">
+      <a class="tile" href="https://open.spotify.com/playlist/4CCkcLrWnukYdBTKRWNFUR"><img src="cover-feeling.jpg" alt="FEELINGINYOURBONES cover art"><span>FEELINGINYOURBONES</span></a>
+      <a class="tile" href="https://open.spotify.com/playlist/4CCkcLrWnukYdBTKRWNFUR"><img src="cover-europa.jpg" alt="Europa on Fire cover art"><span>Europa on Fire</span></a>
+      <a class="tile" href="https://open.spotify.com/playlist/4CCkcLrWnukYdBTKRWNFUR"><img src="cover-spacewastoid.jpg" alt="SPACEWASTOID cover art"><span>SPACEWASTOID</span></a>
+      <a class="tile" href="https://open.spotify.com/playlist/4CCkcLrWnukYdBTKRWNFUR"><img src="cover-squiddub.jpg" alt="SQUIDDUB cover art"><span>SQUIDDUB</span></a>
+      <a class="tile" href="https://open.spotify.com/playlist/4CCkcLrWnukYdBTKRWNFUR"><img src="cover-bmoc2.jpg" alt="Bigger Man on Campus 2 cover art"><span>Bigger Man on Campus 2</span></a>
+      <a class="tile" href="https://open.spotify.com/playlist/4CCkcLrWnukYdBTKRWNFUR"><img src="cover-biggest.jpg" alt="Biggest Man on Campus cover art"><span>Biggest Man on Campus</span></a>
+    </div>
+    <div class="links" style="margin-top:14px">
+      <a class="btn hero-link" href="https://open.spotify.com/artist/3WI9qDXXqOGAmvwxXw0eaD">
+        <span class="ic">🎧</span><span>Open in Spotify<span class="sub">Artist page — every single</span></span><span class="go">→</span>
+      </a>
+      <a class="btn" href="https://open.spotify.com/playlist/4CCkcLrWnukYdBTKRWNFUR">
+        <span class="ic">📜</span><span>Complete Collection<span class="sub">The full playlist on Spotify</span></span><span class="go">→</span>
+      </a>
+    </div>
+    <p class="note">Tap any cover — it opens right in Spotify. Nothing here can fail to load.</p>
+  </section>
+
+  <section>
+    <h2>All the links</h2>
+    <div class="links">
+      <a class="btn hero-link" href="https://open.spotify.com/artist/3WI9qDXXqOGAmvwxXw0eaD">
+        <span class="ic">🎧</span><span>Spotify<span class="sub">Artist page — all the singles</span></span><span class="go">→</span>
+      </a>
+      <a class="btn" href="https://soundcloud.com/jo-nathan-952034885">
+        <span class="ic">☁️</span><span>SoundCloud<span class="sub">Early drops &amp; works in progress</span></span><span class="go">→</span>
+      </a>
+      <a class="btn" href="https://www.youtube.com/@JTLarroquetteMusic">
+        <span class="ic">▶️</span><span>YouTube<span class="sub">Visualizers, Shorts &amp; live clips</span></span><span class="go">→</span>
+      </a>
+      <a class="btn" href="https://www.tiktok.com/@jjthurty">
+        <span class="ic">🎸</span><span>TikTok<span class="sub">@jjthurty — LIVE performances &amp; covers</span></span><span class="go">→</span>
+      </a>
+      <a class="btn" href="https://www.instagram.com/jo_nathan_aka_larro">
+        <span class="ic">📸</span><span>Instagram<span class="sub">Reels &amp; behind the scenes</span></span><span class="go">→</span>
+      </a>
+      <a class="btn" href="https://facebook.com/johnathan.larroquette">
+        <span class="ic">👍</span><span>Facebook<span class="sub">Community &amp; announcements</span></span><span class="go">→</span>
+      </a>
+      <a class="btn" href="https://x.com/JoNatha17152475">
+        <span class="ic">𝕏</span><span>X<span class="sub">Clips &amp; conversation</span></span><span class="go">→</span>
+      </a>
+    </div>
+  </section>
+
+  <section>
+    <h2>The Board</h2>
+    <div class="board">
+      <div class="post">
+        <div class="meta">📌 Pinned — Oct 3, 2026</div>
+        <p>This page is the new home base. Every link lives up top — if it's about Jo Nathan, it starts here.</p>
+      </div>
+      <div class="post">
+        <div class="meta">🎧 New music</div>
+        <p>FEELINGINYOURBONES — the newest single — is out now. Tap its cover up top and play it loud.</p>
+      </div>
+      <div class="post">
+        <div class="meta">🎸 TikTok LIVE</div>
+        <p>I go live and play — originals, covers, requests, and songs still being born. Follow @jjthurty and pull up.</p>
+      </div>
+      <div class="post">
+        <div class="meta">👑 Cooking</div>
+        <p>Next up: "Bear Skin Plants (Something Real)". Written at 3:30 in the afternoon — you'll know it when you hear it.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Videos</h2>
+    <div class="video card">
+      <iframe title="Biggest Man on Campus — visualizer"
+        src="https://www.youtube-nocookie.com/embed/etIo8ayhzqc"
+        loading="lazy" allowfullscreen
+        allow="accelerometer; encrypted-media; picture-in-picture"></iframe>
+      <p class="cap">Biggest Man on Campus — official visualizer</p>
+    </div>
+    <div class="video card">
+      <iframe title="If You Could Only See (Tonic cover)"
+        src="https://www.youtube-nocookie.com/embed/lEJNxIVGtLU"
+        loading="lazy" allowfullscreen
+        allow="accelerometer; encrypted-media; picture-in-picture"></iframe>
+      <p class="cap">"If You Could Only See" — Tonic cover, from TikTok LIVE</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Releases</h2>
+    <div class="chips">
+      <span class="chip new">FEELINGINYOURBONES</span>
+      <span class="chip">Europa on Fire</span>
+      <span class="chip">SPACEWASTOID</span>
+      <span class="chip">SQUIDDUB</span>
+      <span class="chip">Bigger Man on Campus 2</span>
+      <span class="chip">Biggest Man on Campus</span>
+      <span class="chip">Big Man on Campus</span>
+      <span class="chip">Talk Is Cheap</span>
+      <span class="chip">The Come Up</span>
+      <span class="chip">Wild One (Fibonacci Version)</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>The Crown Crew</h2>
+    <div class="crew">
+      <div class="mate"><div class="nm">💼 Big Man</div><div class="ds">Confident businessman. Green pinstripe suit, sunglasses, feet up on the desk.</div></div>
+      <div class="mate"><div class="nm">🦆 The Duck 👑</div><div class="ds">Black suit, calculator in hand, small gold crown. Runs the numbers.</div></div>
+      <div class="mate"><div class="nm">🐈‍⬛ The Cat</div><div class="ds">Pink glasses, parked at a CRT terminal. Sees everything.</div></div>
+      <div class="mate"><div class="nm">👻 The Ghost 👑</div><div class="ds">Little glowing blue ghost hauling paperwork — crowned, unbothered.</div></div>
+      <div class="mate"><div class="nm">🦑 The Squid</div><div class="ds">Teal, pink headphones, running the phones and the mixers.</div></div>
+      <div class="mate"><div class="nm">🎛️ RETRO DROP SLOP</div><div class="ds">Neon-rain transmissions from MIDNIGHT CURRENT.</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>About</h2>
+    <div class="card">
+      <p>Jo Nathan is the music project of Johnathan Larroquette — guitarist and producer out of Louisiana, building a catalog that jumps from festival dubstep and trance to heavy guitar covers and raw acoustic songs.</p>
+      <p>Six singles deep and counting, with live TikTok performances, a growing cast of crowned characters, and new music always cooking. Mask off — this is the real face behind it.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p><span class="crown2">👑</span> © 2026 Jo Nathan • JTLarroquetteMusic</p>
+    <p>Made in Louisiana. New music on the way.</p>
+  </footer>
+
+</div>
+</body>
+</html>
