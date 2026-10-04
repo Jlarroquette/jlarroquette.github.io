@@ -1,355 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Johnathan Larroquette PMHNP</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        header {
-            background: #333;
-            color: #fff;
-            padding: 20px 0;
-            text-align: center;
-        }
-        .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
-        }
-        .content {
-            padding: 20px;
-            background-color: #fff;
-            margin-bottom: 20px;
-        }
-        h2 {
-            color: #333;
-        }
-        h3, h4 {
-            color: #444;
-        }
-        ul {
-            margin-left: 20px;
-        }
-        .profile-pic {
-            text-align: center;
-            margin: 20px 0;
-        }
-        .profile-pic img {
-            width: 200px;
-            height: auto;
-            border-radius: 50%;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        footer {
-            background: #333;
-            color: #fff;
-            text-align: center;
-            padding: 10px 0;
-            position: relative;
-            bottom: 0;
-            width: 100%;
-        }
-        a {
-            color: #333;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        a:hover {
-            color: #555;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jo Nathan — Official Links, Music & Videos</title>
+<meta name="description" content="Jo Nathan — Louisiana musician. Dubstep, trance, electric guitar. Originals, Drop C covers, and the crown crew. All links, music, and videos in one place.">
+<meta property="og:title" content="Jo Nathan — Official Links, Music & Videos">
+<meta property="og:description" content="Dubstep • Trance • Electric Guitar. Originals & Drop C covers from Louisiana.">
+<meta property="og:image" content="https://jlarroquette.github.io/john.jpg">
+<meta property="og:url" content="https://jlarroquette.github.io/">
+<meta name="theme-color" content="#0a0a14">
+<style>
+  :root{
+    --bg:#0a0a14; --panel:#12121f; --panel2:#17172a;
+    --ink:#f2f2f8; --dim:#a7a7c2;
+    --cyan:#22d3ee; --magenta:#e879f9; --gold:#f5c451;
+    --radius:16px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    background:
+      radial-gradient(900px 500px at 15% -5%, rgba(34,211,238,.14), transparent 60%),
+      radial-gradient(900px 500px at 85% 0%, rgba(232,121,249,.12), transparent 60%),
+      var(--bg);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.55;
+    padding:32px 16px 56px;
+  }
+  .wrap{max-width:680px;margin:0 auto}
+  header{text-align:center;margin-bottom:28px}
+  .photo{
+    width:148px;height:148px;border-radius:50%;object-fit:cover;
+    border:3px solid transparent;
+    background:linear-gradient(var(--bg),var(--bg)) padding-box,
+               linear-gradient(135deg,var(--cyan),var(--magenta),var(--gold)) border-box;
+    box-shadow:0 0 34px rgba(34,211,238,.35), 0 0 60px rgba(232,121,249,.18);
+  }
+  .crown{font-size:26px;display:block;margin-top:10px}
+  h1{
+    font-size:44px;letter-spacing:3px;margin-top:2px;font-weight:900;
+    background:linear-gradient(90deg,var(--cyan),#fff,var(--magenta));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .tagline{color:var(--dim);font-size:16px;margin-top:6px}
+  .tagline b{color:var(--gold);font-weight:600}
+  section{margin-top:30px}
+  h2{
+    font-size:14px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);
+    margin-bottom:12px;display:flex;align-items:center;gap:10px;
+  }
+  h2::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(255,255,255,.25),transparent)}
+  .links{display:flex;flex-direction:column;gap:10px}
+  .btn{
+    display:flex;align-items:center;gap:14px;
+    background:var(--panel);border:1px solid rgba(255,255,255,.09);
+    border-radius:var(--radius);padding:15px 18px;
+    color:var(--ink);text-decoration:none;font-size:17px;font-weight:600;
+    transition:transform .12s ease, border-color .12s ease, background .12s ease;
+  }
+  .btn:hover{transform:translateY(-2px);background:var(--panel2);border-color:rgba(34,211,238,.55)}
+  .btn .ic{font-size:22px;width:28px;text-align:center}
+  .btn .sub{display:block;font-size:13px;font-weight:400;color:var(--dim)}
+  .btn .go{margin-left:auto;color:var(--dim);font-size:18px}
+  .btn.hero-link{
+    background:linear-gradient(90deg,rgba(34,211,238,.18),rgba(232,121,249,.18));
+    border-color:rgba(245,196,81,.5);
+  }
+  .card{background:var(--panel);border:1px solid rgba(255,255,255,.09);border-radius:var(--radius);padding:18px}
+  .card p{color:#d9d9e8}
+  .card p + p{margin-top:10px}
+  iframe{border:0;border-radius:12px;width:100%}
+  .video{margin-bottom:14px}
+  .video iframe{aspect-ratio:16/9;height:auto}
+  .video .cap{font-size:13px;color:var(--dim);margin-top:6px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{
+    background:var(--panel2);border:1px solid rgba(255,255,255,.1);
+    padding:7px 13px;border-radius:999px;font-size:14px;
+  }
+  .chip.new{border-color:var(--gold);color:var(--gold)}
+  .crew{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .mate{background:var(--panel);border:1px solid rgba(255,255,255,.09);border-radius:var(--radius);padding:14px 16px}
+  .mate .nm{font-weight:800;font-size:16px}
+  .mate .ds{color:var(--dim);font-size:13.5px;margin-top:2px}
+  footer{text-align:center;color:var(--dim);font-size:13px;margin-top:42px}
+  footer .crown2{color:var(--gold)}
+  @media (max-width:520px){ h1{font-size:34px} .crew{grid-template-columns:1fr} }
+</style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <h1>Johnathan Larroquette PMHNP</h1>
-        </div>
-    </header>
+<div class="wrap">
 
-    <!-- Profile Picture -->
-    <div class="container profile-pic">
-        <img src="john.jpg" alt="Johnathan Larroquette">
-    </div>
+  <header>
+    <img class="photo" src="john.jpg" alt="Jo Nathan">
+    <span class="crown">👑</span>
+    <h1>JO NATHAN</h1>
+    <p class="tagline">Dubstep • Trance • Electric Guitar<br>
+    Originals &amp; Drop C covers from <b>Louisiana</b></p>
+  </header>
 
-    <!-- Main Content -->
-    <div class="container content">
-        <h2>About Me</h2>
-        <p>My name is Johnathan Larroquette, and I have been working in the mental health field for over 13 years. Throughout this time, I have worked with patients dealing with diverse mental health conditions. I have experience in acute psychiatric hospital settings, and I am passionate about helping others achieve better mental and physical health. I strive to problem-solve and help patients come up with personalized solutions to enhance their well-being.</p>
-        
-              
-        <h2>Licensing & Education</h2>
-        <p>MSN (Master of Science in Nursing) at McNeese State University</p>
-        <p>License Type: APRN (Advanced Practice Registered Nurse) (Louisiana)</p>
+  <section>
+    <h2>Listen</h2>
+    <iframe title="Jo Nathan — Complete Collection on Spotify"
+      src="https://open.spotify.com/embed/playlist/4CCkcLrWnukYdBTKRWNFUR?utm_source=generator&theme=0"
+      height="380" loading="lazy"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+  </section>
 
-        
-        <h2>Emergency Resources</h2>
-        <p>If you're experiencing emotional distress, please contact the following resources for free, confidential support 24/7:</p>
-        <ul>
-            <li><strong>Suicide Prevention Lifeline:</strong> Call 1-800-273-8255</li>
-            <li><strong>Crisis Text Line:</strong> Text HOME to 741741</li>
-        </ul>
+  <section>
+    <h2>All the links</h2>
+    <div class="links">
+      <a class="btn hero-link" href="https://open.spotify.com/artist/3WI9qDXXqOGAmvwxXw0eaD">
+        <span class="ic">🎧</span><span>Spotify<span class="sub">Artist page — all the singles</span></span><span class="go">→</span>
+      </a>
+      <a class="btn" href="https://soundcloud.com/jo-nathan-952034885">
+        <span class="ic">☁️</span><span>SoundCloud<span class="sub">Early drops &amp; works in progress</span></span><span class="go">→</span>
+      </a>
+      <a class="btn" href="https://www.youtube.com/@JTLarroquetteMusic">
+        <span class="ic">▶️</span><span>YouTube<span class="sub">Visualizers, Shorts &amp; live clips</span></span><span class="go">→</span>
+      </a>
+      <a class="btn" href="https://www.tiktok.com/@jjthurty">
+        <span class="ic">🎸</span><span>TikTok<span class="sub">@jjthurty — LIVE performances &amp; covers</span></span><span class="go">→</span>
+      </a>
+      <a class="btn" href="https://www.instagram.com/jo_nathan_aka_larro">
+        <span class="ic">📸</span><span>Instagram<span class="sub">Reels &amp; behind the scenes</span></span><span class="go">→</span>
+      </a>
+      <a class="btn" href="https://facebook.com/johnathan.larroquette">
+        <span class="ic">👍</span><span>Facebook<span class="sub">Community &amp; announcements</span></span><span class="go">→</span>
+      </a>
+      <a class="btn" href="https://x.com/JoNatha17152475">
+        <span class="ic">𝕏</span><span>X<span class="sub">Clips &amp; conversation</span></span><span class="go">→</span>
+      </a>
     </div>
-    
-    <!-- Pharmacologic Treatments Section -->
-    <div class="container content">
-        <h2>Pharmacologic Treatments for Tourette Syndrome</h2>
-        
-        <h3>1. Antipsychotics</h3>
-        
-        <h4>A. Haloperidol</h4>
-        <ul>
-            <li><strong>Starting Dose:</strong>
-                <ul>
-                    <li>Adults: ~0.5–2 mg/day (often started at 0.5–1 mg, then titrated slowly)</li>
-                    <li>Children: Lower doses adjusted by weight</li>
-                </ul>
-            </li>
-            <li><strong>Common Side Effects:</strong> Extrapyramidal symptoms (EPS), sedation, akathisia, dystonia, parkinsonism, anticholinergic effects, possible QT prolongation</li>
-            <li><strong>Time to Effect:</strong> Typically 2–4 weeks for noticeable tic reduction</li>
-        </ul>
-        
-        <h4>B. Pimozide</h4>
-        <ul>
-            <li><strong>Starting Dose:</strong> Generally 0.5–1 mg/day, titrated gradually</li>
-            <li><strong>Common Side Effects:</strong> QT prolongation (cardiac risk), EPS, sedation, gastrointestinal upset</li>
-            <li><strong>Time to Effect:</strong> Approximately 2–4 weeks</li>
-        </ul>
-        
-        <h4>C. Risperidone</h4>
-        <ul>
-            <li><strong>Starting Dose:</strong>
-                <ul>
-                    <li>Children: ~0.5–1 mg/day</li>
-                    <li>Adults: ~1–2 mg/day</li>
-                </ul>
-            </li>
-            <li><strong>Common Side Effects:</strong> Weight gain, sedation, metabolic changes, increased prolactin levels, occasional EPS, orthostatic hypotension</li>
-            <li><strong>Time to Effect:</strong> Some benefit may be seen within 1–2 weeks; full effect usually by 2–4 weeks</li>
-        </ul>
-        
-        <h4>D. Aripiprazole</h4>
-        <ul>
-            <li><strong>Starting Dose:</strong> Typically 2.5–5 mg/day (adults often start at 5 mg/day)</li>
-            <li><strong>Common Side Effects:</strong> Akathisia, insomnia, headache, nausea; generally milder metabolic effects than risperidone</li>
-            <li><strong>Time to Effect:</strong> Initial improvements may appear within 1–2 weeks; titration may continue for 4–6 weeks</li>
-        </ul>
-        
-        <h3>2. Alpha‑2 Adrenergic Agonists</h3>
-        
-        <h4>A. Clonidine</h4>
-        <ul>
-            <li><strong>Starting Dose:</strong> Commonly 0.025 mg (25 mcg) twice daily in children; adults may use similar weight-based dosing</li>
-            <li><strong>Common Side Effects:</strong> Sedation, hypotension, dry mouth, dizziness, potential rebound hypertension if stopped abruptly</li>
-            <li><strong>Time to Effect:</strong> Effects on tics and associated symptoms may be seen within 1–2 weeks</li>
-        </ul>
-        
-        <h4>B. Guanfacine (Extended Release)</h4>
-        <ul>
-            <li><strong>Starting Dose:</strong>
-                <ul>
-                    <li>Children: Approximately 1 mg once daily</li>
-                    <li>Adults: Often 1–2 mg once daily</li>
-                </ul>
-            </li>
-            <li><strong>Common Side Effects:</strong> Sedation, fatigue, headache, irritability, hypotension</li>
-            <li><strong>Time to Effect:</strong> Benefits typically emerge within 1–2 weeks, with full effect by 4 weeks</li>
-        </ul>
-        
-        <h3>3. VMAT2 Inhibitors</h3>
-        
-        <h4>A. Tetrabenazine</h4>
-        <ul>
-            <li><strong>Starting Dose:</strong> Typically starts at 12.5 mg per day (divided doses) in adults; titration is gradual</li>
-            <li><strong>Common Side Effects:</strong> Sedation, parkinsonism-like symptoms, depression, akathisia, orthostatic hypotension</li>
-            <li><strong>Time to Effect:</strong> May begin working within 1–2 weeks with gradual titration</li>
-        </ul>
-        
-        <h4>B. Deutetrabenazine</h4>
-        <ul>
-            <li><strong>Starting Dose:</strong> Often started around 6 mg per day (dosing adjusted based on weight and response)</li>
-            <li><strong>Common Side Effects:</strong> Similar to tetrabenazine (sedation, parkinsonism, mood changes) but sometimes better tolerated</li>
-            <li><strong>Time to Effect:</strong> Typically 1–2 weeks for initial improvement</li>
-        </ul>
-        
-        <h4>C. Valbenazine</h4>
-        <ul>
-            <li><strong>Starting Dose:</strong> Often 40 mg/day (primarily used for tardive dyskinesia but may be considered off‑label)</li>
-            <li><strong>Common Side Effects:</strong> Sedation, anticholinergic effects; gastrointestinal upset</li>
-            <li><strong>Time to Effect:</strong> Generally 2–4 weeks</li>
-        </ul>
-        
-        <h3>4. Focal Treatments</h3>
-        
-        <h4>Botulinum Toxin Injections</h4>
-        <ul>
-            <li><strong>Starting Dose:</strong> Highly individualized; dosing depends on the muscle size and tic severity (measured in units per injection)</li>
-            <li><strong>Common Side Effects:</strong> Localized muscle weakness, injection site pain, rarely systemic effects such as dysphagia (if injected near the neck)</li>
-            <li><strong>Time to Effect:</strong> Effects typically begin within 1–2 weeks, peak around 4–6 weeks, and last about 3–4 months</li>
-        </ul>
-        
-        <h3>5. Adjunctive or Off‑Label Options</h3>
-        
-        <h4>A. Benzodiazepines (e.g., Clonazepam)</h4>
-        <ul>
-            <li><strong>Starting Dose:</strong> Adults: ~0.25–0.5 mg twice daily</li>
-            <li><strong>Common Side Effects:</strong> Sedation, drowsiness, risk of dependence, cognitive impairment, dizziness</li>
-            <li><strong>Time to Effect:</strong> Rapid onset (hours to a day); long-term use is not typically recommended</li>
-        </ul>
-        
-        <h4>B. Topiramate</h4>
-        <ul>
-            <li><strong>Starting Dose:</strong> Often initiated at 25 mg per day, then titrated slowly (may increase to 50 mg/day or more as tolerated)</li>
-            <li><strong>Common Side Effects:</strong> Cognitive slowing, weight loss, paresthesias, potential kidney stone risk, mood changes</li>
-            <li><strong>Time to Effect:</strong> Full effect may take 2–4 weeks as the dose is gradually increased</li>
-        </ul>
-        
-        <h3>Important Considerations</h3>
-        <ul>
-            <li><strong>Individualization:</strong> Treatment for TS is highly individualized. Clinicians often start at a lower dose and titrate slowly while monitoring both effectiveness and side effects.</li>
-            <li><strong>Combination Approaches:</strong> A combination of behavioral therapy (e.g., Comprehensive Behavioral Intervention for Tics [CBIT]) and pharmacotherapy often yields the best outcomes for both tics and comorbid conditions.</li>
-            <li><strong>Monitoring:</strong> Regular follow-up is critical to adjust doses, manage side effects, and ensure the chosen regimen remains effective.</li>
-            <li><strong>Consult a Healthcare Professional:</strong> Always consult a healthcare professional for personalized dosing and treatment recommendations.</li>
-        </ul>
+  </section>
+
+  <section>
+    <h2>Videos</h2>
+    <div class="video card">
+      <iframe title="Biggest Man on Campus — visualizer"
+        src="https://www.youtube-nocookie.com/embed/etIo8ayhzqc"
+        loading="lazy" allowfullscreen
+        allow="accelerometer; encrypted-media; picture-in-picture"></iframe>
+      <p class="cap">Biggest Man on Campus — official visualizer</p>
     </div>
-    <!-- DBS Procedure for Tourette Syndrome -->
-<div class="container content">
-    <h2>Understanding Deep Brain Stimulation (DBS) for Tourette Syndrome</h2>
-    <p>
-        Deep Brain Stimulation (DBS) is a surgical treatment option used for people with severe Tourette syndrome (TS) when other treatments haven’t been effective. DBS involves implanting tiny electrodes in specific areas of the brain to help regulate the abnormal signals that cause tics. A small battery-powered device (similar to a pacemaker) is then placed under the skin in your chest to send electrical impulses to the brain.
-    </p>
-    
-    <h3>What to Expect During the Procedure</h3>
-    <ul>
-        <li>
-            <strong>Pre-Surgery Evaluation:</strong>
-            <br>
-            You will undergo a thorough evaluation—often including brain imaging (such as an MRI) and neurological tests—to determine the best target areas for stimulation.
-        </li>
-        <li>
-            <strong>Surgical Implantation:</strong>
-            <br>
-            During the surgery (usually performed under general anesthesia or local anesthesia with sedation), the surgeon will insert electrodes into the targeted brain areas. A small generator is implanted under your chest skin and connected to these electrodes via wires.
-        </li>
-        <li>
-            <strong>Recovery:</strong>
-            <br>
-            Recovery is similar to other neurosurgical procedures. You may stay in the hospital for a day or two for monitoring.
-        </li>
-    </ul>
-    
-    <h3>What to Expect After DBS</h3>
-    <ul>
-        <li>
-            <strong>Tuning the Device:</strong>
-            <br>
-            Your doctor will adjust the stimulation settings over several visits to find the most effective balance with minimal side effects. This tuning process may take several weeks to a few months.
-        </li>
-        <li>
-            <strong>Outcomes:</strong>
-            <br>
-            While DBS is not a cure, many patients experience a significant reduction in tics and an overall improvement in quality of life.
-        </li>
-        <li>
-            <strong>Follow-Up Care:</strong>
-            <br>
-            Regular check-ups are needed to monitor the device and adjust settings as necessary.
-        </li>
-    </ul>
-    
-    <h3>Benefits of DBS</h3>
-    <ul>
-        <li>Can substantially reduce tic severity.</li>
-        <li>Improves overall daily functioning and quality of life.</li>
-        <li>Provides an option for patients who have not responded to medications or behavioral therapies.</li>
-    </ul>
-    
-    <h3>Risks and Considerations</h3>
-    <ul>
-        <li>
-            <strong>Surgical Risks:</strong> Any brain surgery carries risks such as infection, bleeding, or, rarely, stroke.
-        </li>
-        <li>
-            <strong>Device-Related Risks:</strong> Issues like lead migration or battery failure can occur, though they are uncommon.
-        </li>
-        <li>
-            <strong>Side Effects:</strong> Some patients may experience mood changes, speech difficulties, or other neurological side effects, which can often be adjusted with fine-tuning of the device.
-        </li>
-        <li>
-            <strong>Ongoing Management:</strong> DBS is a management tool—not a cure—so continuous follow-up and adjustments are necessary.
-        </li>
-    </ul>
-    
-    <h3>Is DBS Right for You?</h3>
-    <p>
-        DBS is typically reserved for individuals with severe TS who have not achieved adequate relief from medications or behavioral therapies. A comprehensive evaluation by a team of specialists (including neurologists, neurosurgeons, and psychiatrists) is essential to determine if DBS is a suitable option.
-    </p>
-    <p>
-        This overview is for informational purposes only. For personalized advice, please consult your healthcare provider.
-    </p>
+    <div class="video card">
+      <iframe title="If You Could Only See (Tonic cover)"
+        src="https://www.youtube-nocookie.com/embed/lEJNxIVGtLU"
+        loading="lazy" allowfullscreen
+        allow="accelerometer; encrypted-media; picture-in-picture"></iframe>
+      <p class="cap">"If You Could Only See" — Tonic cover, from TikTok LIVE</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Releases</h2>
+    <div class="chips">
+      <span class="chip new">FEELINGINYOURBONES</span>
+      <span class="chip">Europa on Fire</span>
+      <span class="chip">SPACEWASTOID</span>
+      <span class="chip">SQUIDDUB</span>
+      <span class="chip">Bigger Man on Campus 2</span>
+      <span class="chip">Biggest Man on Campus</span>
+      <span class="chip">Big Man on Campus</span>
+      <span class="chip">Talk Is Cheap</span>
+      <span class="chip">The Come Up</span>
+      <span class="chip">Wild One (Fibonacci Version)</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>The Crown Crew</h2>
+    <div class="crew">
+      <div class="mate"><div class="nm">💼 Big Man</div><div class="ds">Confident businessman. Green pinstripe suit, sunglasses, feet up on the desk.</div></div>
+      <div class="mate"><div class="nm">🦆 The Duck 👑</div><div class="ds">Black suit, calculator in hand, small gold crown. Runs the numbers.</div></div>
+      <div class="mate"><div class="nm">🐈‍⬛ The Cat</div><div class="ds">Pink glasses, parked at a CRT terminal. Sees everything.</div></div>
+      <div class="mate"><div class="nm">👻 The Ghost 👑</div><div class="ds">Little glowing blue ghost hauling paperwork — crowned, unbothered.</div></div>
+      <div class="mate"><div class="nm">🦑 The Squid</div><div class="ds">Teal, pink headphones, running the phones and the mixers.</div></div>
+      <div class="mate"><div class="nm">🎛️ RETRO DROP SLOP</div><div class="ds">Neon-rain transmissions from MIDNIGHT CURRENT.</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>About</h2>
+    <div class="card">
+      <p>Jo Nathan is the music project of Johnathan Larroquette — guitarist and producer out of Louisiana, building a catalog that jumps from festival dubstep and trance to Drop C guitar covers and raw acoustic songs.</p>
+      <p>Six singles deep and counting, with live TikTok performances, a growing cast of crowned characters, and new music always cooking. Mask off — this is the real face behind it.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p><span class="crown2">👑</span> © 2026 Jo Nathan • JTLarroquetteMusic</p>
+    <p>Made in Louisiana. New music on the way.</p>
+  </footer>
+
 </div>
-
-    
-    
-    <!-- DBS Research for Tourette Syndrome Section -->
-<div class="container content">
-    <h2>Newest Research into Deep Brain Stimulation (DBS) for Tourette Syndrome</h2>
-    <p>Recent studies (2023–2024) are advancing our understanding of DBS as a treatment for Tourette syndrome. Researchers are working on optimizing stimulation targets, improving long-term outcomes, refining programming strategies, and exploring neuroimaging biomarkers for personalized treatment. Below is a summary of key findings and topics from the latest research:</p>
-    
-    <ol>
-        <li>
-            <strong>Optimizing DBS Targets: Centromedian Thalamus vs. Globus Pallidus Internus (GPi)</strong>
-            <ul>
-                <li>Recent trials compare the efficacy of targeting the centromedian-parafascicular complex versus the GPi. Findings suggest that GPi DBS may yield superior control over tics and improve associated comorbid symptoms like OCD.</li>
-                <li><em>Source:</em> Smith, J., &amp; Lee, A. (2023). <a href="https://doi.org/10.1088/1741-2552/acabc1" target="_blank">Comparative outcomes of DBS targets in Tourette syndrome: A randomized trial. Journal of Neural Engineering, 20(3), 034005</a>.</li>
-            </ul>
-        </li>
-        <li>
-            <strong>Long-Term Outcomes and Quality of Life Improvements</strong>
-            <ul>
-                <li>A multicenter follow-up study from 2024 reported sustained tic reduction and significant quality-of-life improvements over a 2-year period, with minimal adverse events.</li>
-                <li><em>Source:</em> Martinez, L., et al. (2024). <a href="https://doi.org/10.1111/ner.13245" target="_blank">Long-term outcomes of deep brain stimulation in Tourette syndrome: A multicenter study. Neuromodulation, 27(2), 145-152</a>.</li>
-            </ul>
-        </li>
-        <li>
-            <strong>Advances in DBS Programming and Adaptive Systems</strong>
-            <ul>
-                <li>Innovative adaptive and closed-loop DBS systems are being tested to optimize stimulation parameters in real time, potentially reducing side effects while maximizing therapeutic benefits.</li>
-                <li><em>Source:</em> Doe, A., &amp; Patel, R. (2023). <a href="https://doi.org/10.1002/mds.28999" target="_blank">Safety and adaptive programming in DBS for Tourette syndrome: A systematic review. Movement Disorders, 38(7), 1023-1030</a>.</li>
-            </ul>
-        </li>
-        <li>
-            <strong>Neuroimaging Biomarkers to Guide DBS Treatment</strong>
-            <ul>
-                <li>Emerging research uses advanced neuroimaging techniques to identify biomarkers that can predict a patient's response to DBS, paving the way for personalized treatment strategies.</li>
-                <li><em>Source:</em> Lee, S. H., et al. (2023). <a href="https://doi.org/10.3389/fneur.2023.123456" target="_blank">Neuroimaging-guided deep brain stimulation in Tourette syndrome: A pilot study. Frontiers in Neurology, 14, 123456</a>.</li>
-            </ul>
-        </li>
-        <li>
-            <strong>Safety and Side Effect Profiles</strong>
-            <ul>
-                <li>Newer reviews confirm that DBS is generally well tolerated. While some patients experience transient mood changes or speech difficulties, these adverse effects are typically manageable with proper programming and follow-up care.</li>
-                <li><em>Source:</em> Jones, M. E., &amp; Chen, T. (2023). <a href="https://doi.org/10.1016/j.brs.2022.11.007" target="_blank">Adverse effects of deep brain stimulation in Tourette syndrome: A systematic review. Brain Stimulation, 16(1), 89-96</a>.</li>
-            </ul>
-        </li>
-    </ol>
-    
-    <p><strong>Summary:</strong> The latest research into DBS for Tourette syndrome focuses on optimizing target selection, advancing adaptive DBS programming, utilizing neuroimaging biomarkers for personalized treatment, and confirming long-term efficacy and safety. These advances are crucial in improving outcomes for individuals with refractory TS and increasing overall awareness of treatment options.</p>
-    
-    <p>For further details and the most recent updates, please refer to the cited studies and explore additional resources on PubMed and academic journals.</p>
-</div>
-
-   
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 Johnathan Larroquette LLC  <a href="#contact">Contact Us</a></p>
-    </footer>
 </body>
 </html>
