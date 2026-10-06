@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HQ Weather — Lafayette, LA</title>
+<!-- Weather Station v2.1: key-in-hash streaming, self-healing, live-frame stamp, night dim -->
+<style>
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html,body { height:100%; overflow:hidden; background:#07070d; color:#f2f2f7;
+    font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; cursor:none; }
+  #app { height:100vh; display:flex; flex-direction:column; padding:2.2vh 2.6vw; gap:1.6vh; }
+  /* alert banner */
+  #alert { display:none; background:#c81e1e; color:#fff; border-radius:12px; padding:1.2vh 1.4vw;
+    font-size:2.2vh; font-weight:700; line-height:1.25; }
+  #alert small { display:block; font-weight:500; font-size:1.7vh; opacity:.92; }
+  /* header */
+  header { display:flex; justify-content:space-between; align-items:flex-end; }
+  #place { font-size:2.4vh; letter-spacing:3px; color:#8fd8ff; text-transform:uppercase; }
+  #clock { font-size:6.2vh; font-weight:800; line-height:1; }
+  #date { font-size:2.2vh; color:#aab; text-align:right; }
+  /* main row */
+  #main { display:flex; gap:2.4vw; flex:1; min-height:0; }
+  #now { flex:1.15; display:flex; flex-direction:column; justify-content:center; }
+  #bigTemp { font-size:19vh; font-weight:800; line-height:.95; }
+  #cond { font-size:4.4vh; margin-top:1vh; }
+  #meta { font-size:2.3vh; color:#bbc; margin-top:1.4vh; line-height:1.5; }
+  #side { flex:1; display:flex; flex-direction:column; gap:1.6vh; min-height:0; }
+  #radarBox { flex:1.15; position:relative; border-radius:16px; overflow:hidden; background:#0d1220; min-height:0; }
+  #camBox { flex:1; position:relative; border-radius:16px; overflow:hidden; background:#0d1220; min-height:0; }
+  #camBox .tag { position:absolute; top:10px; left:12px; z-index:5; background:rgba(0,0,0,.55);
+    padding:4px 10px; border-radius:8px; font-size:1.6vh; letter-spacing:2px; color:#ffd9a0; }
+  #cam { width:100%; height:100%; object-fit:contain; display:block; background:#000; }
+  #camOff { position:absolute; inset:0; display:none; align-items:center; justify-content:center; color:#778; font-size:2vh; text-align:center; padding:0 2vw; }
+  #radarBox .tag { position:absolute; top:10px; left:12px; z-index:5; background:rgba(0,0,0,.55);
+    padding:4px 10px; border-radius:8px; font-size:1.6vh; letter-spacing:2px; color:#8fd8ff; }
+  #radar { position:absolute; inset:0; }
+  #radar .tile { position:absolute; width:33.333%; height:33.333%; }
+  /* hourly + days */
+  #hourly { display:flex; gap:1vw; }
+  .hr { flex:1; background:#12121f; border:1px solid #26263f; border-radius:12px; text-align:center; padding:1.1vh .4vw; }
+  .hr .t { font-size:1.8vh; color:#aab; } .hr .i { font-size:3vh; } .hr .tp { font-size:2.4vh; font-weight:700; }
+  .hr .pp { font-size:1.6vh; color:#7db8ff; }
+  #days { display:flex; gap:1vw; }
+  .dy { flex:1; background:#12121f; border:1px solid #26263f; border-radius:12px; padding:1.2vh 1vw; }
+  .dy .dn { font-size:2vh; color:#8fd8ff; letter-spacing:1px; text-transform:uppercase; }
+  .dy .di { font-size:3.4vh; } .dy .dt { font-size:2.1vh; line-height:1.35; color:#dde; }
+  .dy .hl { font-size:2vh; margin-top:.4vh; } .dy .hl b { color:#ffd9a0; } .dy .hl span { color:#9fc2ff; }
+  #camLive { position:absolute; right:12px; bottom:10px; z-index:5; display:none; background:rgba(0,0,0,.55);
+    padding:4px 10px; border-radius:8px; font-size:1.6vh; letter-spacing:1px; }
+  body { transition:filter 2s ease; }
+  footer { display:flex; justify-content:space-between; font-size:1.5vh; color:#667; }
+  /* photo mode */
+  #photo { position:fixed; inset:0; z-index:50; opacity:0; pointer-events:none; transition:opacity 1.6s ease; background:#000; }
+  #photo.show { opacity:1; }
+  #photo img { width:100%; height:100%; object-fit:cover; }
+  #photoBar { position:absolute; left:0; right:0; bottom:0; padding:2vh 3vw; display:flex; justify-content:space-between; align-items:flex-end;
+    background:linear-gradient(transparent, rgba(0,0,0,.78)); font-size:3vh; font-weight:700; }
+  #photoBar small { display:block; font-size:1.9vh; font-weight:500; color:#ccd; }
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="alert"></div>
+  <header>
+    <div><div id="place">Lafayette, Louisiana</div><div id="clock">--:--</div></div>
+    <div id="date">—</div>
+  </header>
+  <div id="main">
+    <div id="now">
+      <div id="bigTemp">--°</div>
+      <div id="cond">Loading weather…</div>
+      <div id="meta"></div>
+    </div>
+    <div id="side">
+      <div id="radarBox"><div class="tag">LIVE RADAR</div><div id="radar"></div></div>
+      <div id="camBox"><div class="tag">DOOR CAM</div><video id="cam" autoplay muted playsinline></video><div id="camOff">Camera off — allow camera access for this page</div><div id="camLive"></div></div>
+    </div>
+  </div>
+  <div id="hourly"></div>
+  <div id="days"></div>
+  <footer><span>National Weather Service · Lake Charles office</span><span id="stamp">—</span></footer>
+</div>
+<div id="photo"><img id="photoImg" alt=""><div id="photoBar"><div><span id="pbTemp">--°</span> <small id="pbCond"></small></div><div id="pbClock"></div></div></div>
+<script src="https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js"></script>
+<script>
+  /* ===== Photo rotation: list photo files placed next to this page in a "photos" folder.
+         Empty = photo mode off (weather stays up full-time). ===== */
+  var PHOTOS = [ /* "photos/example1.jpg", "photos/example2.jpg" */ ];
+  var PHOTO_EVERY_MS = 90000, PHOTO_SHOW_MS = 26000;
+
+  var LAT = 30.2241, LON = -92.0198;
+  var FORECAST = "https://api.weather.gov/gridpoints/LCH/105,95/forecast";
+  var HOURLY   = "https://api.weather.gov/gridpoints/LCH/105,95/forecast/hourly";
+  var STATIONS = "https://api.weather.gov/gridpoints/LCH/105,95/stations";
+  var ALERTS   = "https://api.weather.gov/alerts/active?point=" + LAT + "," + LON;
+  var H = { "Accept": "application/geo+json" };
+  function $(id){ return document.getElementById(id); }
+  function j(u){ return fetch(u, { headers: H }).then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); }); }
+  function icon(txt, isDay){
+    txt = (txt||"").toLowerCase();
+    if (txt.indexOf("thunder")>-1) return "⛈️";
+    if (txt.indexOf("rain")>-1 || txt.indexOf("shower")>-1) return "🌧️";
+    if (txt.indexOf("drizzle")>-1) return "🌦️";
+    if (txt.indexOf("snow")>-1) return "🌨️";
+    if (txt.indexOf("fog")>-1) return "🌫️";
+    if (txt.indexOf("cloud")>-1 && txt.indexOf("partly")>-1) return isDay===false ? "☁️" : "⛅";
+    if (txt.indexOf("cloud")>-1 || txt.indexOf("overcast")>-1) return "☁️";
+    if (txt.indexOf("clear")>-1 || txt.indexOf("sunny")>-1) return isDay===false ? "🌙" : "☀️";
+    return isDay===false ? "🌙" : "🌤️";
+  }
+  /* clock */
+  function tickClock(){
+    var d = new Date();
+    var t = d.toLocaleTimeString("en-US", { hour:"numeric", minute:"2-digit" });
+    $("clock").textContent = t; $("pbClock").textContent = t;
+    $("date").textContent = d.toLocaleDateString("en-US", { weekday:"long", month:"long", day:"numeric", year:"numeric" });
+    var hr = d.getHours();
+    document.body.style.filter = (hr >= 22 || hr < 6) ? "brightness(.55)" : "";
+  }
+  setInterval(tickClock, 1000); tickClock();
+  /* current conditions from nearest station */
+  function loadNow(){
+    j(STATIONS).then(function(s){
+      var id = s.features[0].properties.stationIdentifier;
+      return j("https://api.weather.gov/stations/" + id + "/observations/latest");
+    }).then(function(o){
+      var p = o.properties;
+      if (p.temperature.value != null) $("bigTemp").textContent = Math.round(p.temperature.value * 9/5 + 32) + "°";
+      if (p.textDescription) $("cond").textContent = icon(p.textDescription) + " " + p.textDescription;
+      if (p.textDescription) $("pbCond").textContent = p.textDescription;
+      var bits = [];
+      if (p.heatIndex.value != null) bits.push("Feels like " + Math.round(p.heatIndex.value * 9/5 + 32) + "°");
+      if (p.windSpeed.value != null) bits.push("Wind " + Math.round(p.windSpeed.value * 2.237) + " mph " + (p.windDirection.value!=null ? degDir(p.windDirection.value) : ""));
+      if (p.relativeHumidity.value != null) bits.push("Humidity " + Math.round(p.relativeHumidity.value) + "%");
+      $("meta").innerHTML = bits.join("<br>");
+      $("stamp").textContent = "Updated " + new Date().toLocaleTimeString("en-US", { hour:"numeric", minute:"2-digit" });
+    }).catch(function(){});
+  }
+  function degDir(d){ var dirs=["N","NE","E","SE","S","SW","W","NW"]; return dirs[Math.round(d/45)%8]; }
+  /* hourly: next 8 */
+  function loadHourly(){
+    j(HOURLY).then(function(h){
+      var ps = h.properties.periods.slice(0, 8), out = "";
+      ps.forEach(function(p){
+        var hr = new Date(p.startTime).toLocaleTimeString("en-US", { hour:"numeric" });
+        var pp = (p.probabilityOfPrecipitation && p.probabilityOfPrecipitation.value) || 0;
+        out += '<div class="hr"><div class="t">' + hr + '</div><div class="i">' + icon(p.shortForecast, p.isDaytime) +
+               '</div><div class="tp">' + p.temperature + '°</div><div class="pp">' + (pp ? "💧 " + pp + "%" : "&nbsp;") + '</div></div>';
+      });
+      $("hourly").innerHTML = out;
+      if (ps[0]){ $("pbTemp").textContent = ps[0].temperature + "°"; if ($("bigTemp").textContent.indexOf("--")>-1) $("bigTemp").textContent = ps[0].temperature + "°";
+        if ($("cond").textContent.indexOf("Loading")>-1) $("cond").textContent = icon(ps[0].shortForecast, ps[0].isDaytime) + " " + ps[0].shortForecast; }
+    }).catch(function(){});
+  }
+  /* daily: next 4 days (pairs of day/night periods) */
+  function loadDays(){
+    j(FORECAST).then(function(f){
+      var ps = f.properties.periods, days = [], i = 0;
+      if (ps.length && !ps[0].isDaytime) i = 1;
+      for (var k = i; k + 1 < ps.length && days.length < 4; k += 2){
+        var d = ps[k], n = ps[k+1];
+        days.push({ name: d.name.replace(/ Night$/, ""), icon: icon(d.shortForecast, true),
+          hi: Math.max(d.temperature, n.temperature), lo: Math.min(d.temperature, n.temperature), txt: d.shortForecast });
+      }
+      $("days").innerHTML = days.map(function(d){
+        return '<div class="dy"><div class="dn">' + d.name + '</div><div class="di">' + d.icon + '</div><div class="dt">' + d.txt +
+               '</div><div class="hl"><b>' + d.hi + '°</b> / <span>' + d.lo + '°</span></div></div>';
+      }).join("");
+    }).catch(function(){});
+  }
+  /* alerts */
+  var alertList = [], alertIdx = 0;
+  function loadAlerts(){
+    j(ALERTS).then(function(a){
+      alertList = (a.features || []).map(function(f){ return f.properties; });
+      if (alertList.length){ $("alert").style.display = "block"; showAlert(); }
+      else $("alert").style.display = "none";
+    }).catch(function(){});
+  }
+  function showAlert(){
+    if (!alertList.length) return;
+    var p = alertList[alertIdx % alertList.length]; alertIdx++;
+    $("alert").innerHTML = "⚠ " + p.event + "<small>" + (p.headline || p.description.split(".")[0]) + "</small>";
+  }
+  setInterval(showAlert, 8000);
+  /* radar: 3x3 tile composite, Carto dark base + RainViewer overlay */
+  function tileXY(lat, lon, z){
+    var n = Math.pow(2, z), x = Math.floor((lon + 180) / 360 * n);
+    var r = lat * Math.PI / 180, y = Math.floor((1 - Math.log(Math.tan(r) + 1/Math.cos(r)) / Math.PI) / 2 * n);
+    return { x: x, y: y };
+  }
+  function loadRadar(){
+    fetch("https://api.rainviewer.com/public/weather-maps.json").then(function(r){ return r.json(); }).then(function(m){
+      var frames = m.radar.past, f = frames[frames.length - 1], z = 7, c = tileXY(LAT, LON, z), html = "";
+      for (var dy = -1; dy <= 1; dy++) for (var dx = -1; dx <= 1; dx++){
+        var x = c.x + dx, y = c.y + dy, left = (dx + 1) * 33.333, top = (dy + 1) * 33.333;
+        html += '<img class="tile" style="left:' + left + '%;top:' + top + '%" src="https://basemaps.cartocdn.com/dark_all/' + z + '/' + x + '/' + y + '.png">';
+        html += '<img class="tile" style="left:' + left + '%;top:' + top + '%" src="' + m.host + f.path + '/256/' + z + '/' + x + '/' + y + '/2/1_1.png">';
+      }
+      $("radar").innerHTML = html;
+    }).catch(function(){});
+  }
+  /* ===== door camera — v2.1 =====
+     HOST (default, on the Mini): tuned local camera (720p cap so the old i7
+     stays cool + quiet), full frame, and the stream is published so a phone
+     can watch. REMOTE (?remote=1, on the phone): no local camera — plays the
+     Mini's published stream, auto-reconnects, and stamps every live frame so
+     a frozen picture can never fake being live.
+     The stream key rides in the URL hash (#k=...) and is NEVER printed in
+     this file — that's what makes a public copy of this page safe. ===== */
+  var KEY = (location.hash.match(/k=([A-Za-z0-9]+)/) || [])[1] || "";
+  var HOST_ID = KEY ? "jndoor-" + KEY : "";
+  var REMOTE = /[?&]remote=1/.test(location.search);
+  function camMsg(t){ var el = $("camOff"); el.textContent = t; el.style.display = "flex"; }
+
+  /* ---- HOST: publish the local camera, self-healing ---- */
+  var hostPeer = null, hostStream = null, hostTimer = null;
+  function scheduleHostRestart(ms){
+    if (hostTimer) return;
+    hostTimer = setTimeout(function(){ hostTimer = null; startPublisher(); }, ms || 8000);
+  }
+  function startPublisher(){
+    if (!window.Peer || !HOST_ID || !hostStream) return;
+    try { if (hostPeer && !hostPeer.destroyed) hostPeer.destroy(); } catch(e){}
+    try {
+      hostPeer = new Peer(HOST_ID);
+      hostPeer.on("call", function(call){ call.answer(hostStream); call.on("error", function(){}); });
+      hostPeer.on("disconnected", function(){ try { hostPeer.reconnect(); } catch(e){ scheduleHostRestart(); } });
+      hostPeer.on("error", function(err){ if (err && err.type === "unavailable-id") scheduleHostRestart(15000); });
+    } catch(e){ scheduleHostRestart(); }
+  }
+  setInterval(function(){
+    if (!REMOTE && hostStream && HOST_ID){
+      if (!hostPeer || hostPeer.destroyed) startPublisher();
+      else if (hostPeer.disconnected){ try { hostPeer.reconnect(); } catch(e){} }
+    }
+  }, 20000);
+  function startLocalCam(){
+    if (!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia)){ camMsg("Camera off — allow camera access for this page"); return; }
+    navigator.mediaDevices.getUserMedia({ video: { width: { ideal: 1280, max: 1280 }, height: { ideal: 720, max: 720 }, frameRate: { ideal: 24, max: 30 } }, audio: false })
+      .then(function(stream){
+        hostStream = stream;
+        $("cam").srcObject = stream;
+        var track = stream.getVideoTracks && stream.getVideoTracks()[0];
+        if (track && track.applyConstraints){
+          track.applyConstraints({ advanced: [ { exposureMode: "continuous" }, { whiteBalanceMode: "continuous" }, { focusMode: "continuous" } ] }).catch(function(){});
+        }
+        if (HOST_ID) startPublisher();
+      })
+      .catch(function(){ camMsg("Camera off — allow camera access for this page"); });
+  }
+
+  /* ---- REMOTE (phone): play the Mini's stream, self-healing, live-frame stamp ---- */
+  var viewPeer = null, viewCall = null, viewTimer = null, lastFrameAt = 0, lastFrameStamp = "";
+  function scheduleViewerRetry(){
+    if (viewTimer || !REMOTE) return;
+    viewTimer = setTimeout(function(){ viewTimer = null; if (!$("cam").srcObject) startViewer(); }, 8000);
+  }
+  function startViewer(){
+    if (!HOST_ID){ camMsg("This link is missing its key — use the full phone link from setup."); return; }
+    if (!window.Peer){ camMsg("Cam viewer failed to load — check connection."); return; }
+    camMsg("Connecting to door cam\u2026");
+    try { if (viewCall) viewCall.close(); } catch(e){}
+    try { if (viewPeer && !viewPeer.destroyed) viewPeer.destroy(); } catch(e){}
+    try {
+      viewPeer = new Peer();
+      viewPeer.on("open", function(){
+        var c = document.createElement("canvas"); c.width = 2; c.height = 2;
+        var blank = c.captureStream ? c.captureStream() : undefined;
+        viewCall = viewPeer.call(HOST_ID, blank);
+        if (!viewCall){ scheduleViewerRetry(); return; }
+        viewCall.on("stream", function(rs){
+          var vid = $("cam"); vid.srcObject = rs; $("camOff").style.display = "none";
+          watchFrames(vid);
+        });
+        viewCall.on("error", function(){ scheduleViewerRetry(); });
+        viewCall.on("close", function(){ scheduleViewerRetry(); });
+      });
+      viewPeer.on("disconnected", function(){ scheduleViewerRetry(); });
+      viewPeer.on("error", function(err){
+        if (err && err.type === "peer-unavailable") camMsg("Door cam offline \u2014 the station page is not open on the Mini. Tap the picture to retry.");
+        scheduleViewerRetry();
+      });
+    } catch(e){ scheduleViewerRetry(); }
+  }
+  function watchFrames(vid){
+    var el = $("camLive"); el.style.display = "block";
+    function stamp(){
+      lastFrameAt = Date.now();
+      lastFrameStamp = new Date().toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit", second: "2-digit" });
+      el.textContent = "\u25cf LIVE " + lastFrameStamp; el.style.color = "#ff9c9c";
+      if (vid.requestVideoFrameCallback) vid.requestVideoFrameCallback(stamp);
+    }
+    if (vid.requestVideoFrameCallback) vid.requestVideoFrameCallback(stamp);
+    else lastFrameAt = Date.now();
+  }
+  setInterval(function(){
+    if (!REMOTE) return;
+    var el = $("camLive");
+    if ($("cam").srcObject && lastFrameAt && Date.now() - lastFrameAt > 5000){
+      el.textContent = "\u26a0 STALLED \u2014 last frame " + lastFrameStamp; el.style.color = "#ffd9a0";
+      lastFrameAt = 0; $("cam").srcObject = null;
+      camMsg("Door cam stalled \u2014 reconnecting\u2026"); startViewer();
+    }
+  }, 3000);
+  if (REMOTE) $("camBox").addEventListener("click", function(){ if (!$("cam").srcObject) startViewer(); });
+  if (REMOTE) startViewer(); else startLocalCam();
+  /* photo rotation */
+  if (PHOTOS.length){
+    var pi = 0;
+    setInterval(function(){
+      $("photoImg").src = PHOTOS[pi % PHOTOS.length]; pi++;
+      $("photo").classList.add("show");
+      setTimeout(function(){ $("photo").classList.remove("show"); }, PHOTO_SHOW_MS);
+    }, PHOTO_EVERY_MS);
+  }
+  /* refresh cycles */
+  loadNow(); loadHourly(); loadDays(); loadAlerts(); loadRadar();
+  setInterval(loadNow, 5 * 60 * 1000);
+  setInterval(loadAlerts, 5 * 60 * 1000);
+  setInterval(loadRadar, 5 * 60 * 1000);
+  setInterval(loadHourly, 10 * 60 * 1000);
+  setInterval(loadDays, 10 * 60 * 1000);
+</script>
+</body>
+</html>
