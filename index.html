@@ -4,9 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jo Nathan — Official Links, Music, Videos &amp; LIVE</title>
-<meta name="description" content="Jo Nathan — Louisiana musician. Dubstep, trance, electric guitar — originals, covers, and live TikTok performances. All links, music, and videos in one place.">
+<meta name="description" content="Jo Nathan — Louisiana musician. EDM, electronic, southern rock & dad rock — originals, covers, and live TikTok performances. All links, music, and videos in one place.">
+<link rel="canonical" href="https://jlarroquette.github.io/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Jo Nathan — Official Links, Music, Videos & LIVE">
+<meta name="twitter:description" content="EDM • Electronic • Southern Rock • Dad Rock. Originals, covers & live shows from Louisiana.">
+<meta name="twitter:image" content="https://jlarroquette.github.io/jo-nathan.jpg">
 <meta property="og:title" content="Jo Nathan — Official Links, Music, Videos & LIVE">
-<meta property="og:description" content="Dubstep • Trance • Electric Guitar. Originals, covers & live shows from Louisiana.">
+<meta property="og:description" content="EDM • Electronic • Southern Rock • Dad Rock. Originals, covers & live shows from Louisiana.">
+<meta property="og:type" content="website">
 <meta property="og:image" content="https://jlarroquette.github.io/jo-nathan.jpg">
 <meta property="og:url" content="https://jlarroquette.github.io/">
 <meta name="theme-color" content="#0a0a14">
@@ -139,26 +145,42 @@
   footer{text-align:center;color:var(--dim);font-size:13px;margin-top:42px}
   footer .crown2{color:var(--gold)}
   @media (max-width:520px){ h1{font-size:34px} .crew{grid-template-columns:1fr} }
+
+  ::selection{background:rgba(245,196,81,.85);color:#0a0a14}
+  a,button{-webkit-tap-highlight-color:transparent}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:8px}
+  section{margin-top:34px}
+  .js .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+  .js .reveal.in{opacity:1;transform:none}
+  .bigplay{background-size:200% 100%;animation:sheen 5s ease-in-out infinite}
+  @keyframes sheen{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+  @media (prefers-reduced-motion: reduce){
+    .livedot,.bigplay{animation:none}
+    *{transition:none !important}
+    html{scroll-behavior:auto}
+  }
+  html{scroll-behavior:smooth}
 </style>
 </head>
 <body>
+<script>document.documentElement.classList.add("js");</script>
 <div class="wrap">
 
-  <header>
+  <header class="reveal">
     <img class="photo" src="jo-nathan.jpg" alt="Jo Nathan">
     <span class="crown">👑</span>
     <h1>JO NATHAN</h1>
-    <p class="tagline">Dubstep • Trance • Electric Guitar<br>
+    <p class="tagline">EDM • Electronic • Southern Rock • Dad Rock<br>
     Originals &amp; covers from <b>Louisiana</b></p>
   </header>
 
-  <a class="btn live" href="https://www.tiktok.com/@jjthurty/live">
+  <a class="btn live reveal" href="https://www.tiktok.com/@jjthurty/live">
     <span class="ic"><span class="livedot"></span></span>
     <span>Watch me LIVE on TikTok<span class="sub">@jjthurty — originals, covers &amp; requests, live from Louisiana</span></span>
     <span class="go">→</span>
   </a>
 
-  <section>
+  <section class="reveal">
     <h2>Radio &amp; Reviewers — Start Here</h2>
     <div class="radiobox">
       <button class="bigplay" onclick="playRandom()">▶&nbsp; PLAY A RANDOM TRACK</button>
@@ -181,7 +203,7 @@
     </div>
   </section>
 
-  <section>
+  <section class="reveal">
     <h2>Beat Lab — Practice Loops</h2>
     <div class="beatbox">
       <div class="beatbtns">
@@ -200,16 +222,16 @@
     </div>
   </section>
 
-  <section>
+  <section class="reveal">
     <h2>Listen</h2>
     <div class="covers">
-      <a class="tile" href="https://open.spotify.com/playlist/4CCkcLrWnukYdBTKRWNFUR"><img src="cover-feeling.jpg" alt="FEELINGINYOURBONES cover art"><span>FEELINGINYOURBONES</span></a>
-      <a class="tile" href="https://open.spotify.com/playlist/4CCkcLrWnukYdBTKRWNFUR"><img src="cover-europa.jpg" alt="Europa on Fire cover art"><span>Europa on Fire</span></a>
-      <a class="tile" href="https://open.spotify.com/playlist/4CCkcLrWnukYdBTKRWNFUR"><img src="cover-spacewastoid.jpg" alt="SPACEWASTOID cover art"><span>SPACEWASTOID</span></a>
-      <a class="tile" href="https://open.spotify.com/playlist/4CCkcLrWnukYdBTKRWNFUR"><img src="cover-squiddub.jpg" alt="SQUIDDUB cover art"><span>SQUIDDUB</span></a>
-      <a class="tile" href="https://open.spotify.com/playlist/4CCkcLrWnukYdBTKRWNFUR"><img src="cover-bmoc2.jpg" alt="Bigger Man on Campus 2 cover art"><span>Bigger Man on Campus 2</span></a>
-      <a class="tile" href="https://open.spotify.com/playlist/4CCkcLrWnukYdBTKRWNFUR"><img src="cover-biggest.jpg" alt="Biggest Man on Campus cover art"><span>Biggest Man on Campus</span></a>
-      <a class="tile" href="https://open.spotify.com/playlist/4CCkcLrWnukYdBTKRWNFUR"><img src="cover-bigman.jpg" alt="Big Man on Campus cover art"><span>Big Man on Campus</span></a>
+      <a class="tile" href="https://open.spotify.com/playlist/4CCkcLrWnukYdBTKRWNFUR"><img loading="lazy" decoding="async" src="cover-feeling.jpg" alt="FEELINGINYOURBONES cover art"><span>FEELINGINYOURBONES</span></a>
+      <a class="tile" href="https://open.spotify.com/playlist/4CCkcLrWnukYdBTKRWNFUR"><img loading="lazy" decoding="async" src="cover-europa.jpg" alt="Europa on Fire cover art"><span>Europa on Fire</span></a>
+      <a class="tile" href="https://open.spotify.com/playlist/4CCkcLrWnukYdBTKRWNFUR"><img loading="lazy" decoding="async" src="cover-spacewastoid.jpg" alt="SPACEWASTOID cover art"><span>SPACEWASTOID</span></a>
+      <a class="tile" href="https://open.spotify.com/playlist/4CCkcLrWnukYdBTKRWNFUR"><img loading="lazy" decoding="async" src="cover-squiddub.jpg" alt="SQUIDDUB cover art"><span>SQUIDDUB</span></a>
+      <a class="tile" href="https://open.spotify.com/playlist/4CCkcLrWnukYdBTKRWNFUR"><img loading="lazy" decoding="async" src="cover-bmoc2.jpg" alt="Bigger Man on Campus 2 cover art"><span>Bigger Man on Campus 2</span></a>
+      <a class="tile" href="https://open.spotify.com/playlist/4CCkcLrWnukYdBTKRWNFUR"><img loading="lazy" decoding="async" src="cover-biggest.jpg" alt="Biggest Man on Campus cover art"><span>Biggest Man on Campus</span></a>
+      <a class="tile" href="https://open.spotify.com/playlist/4CCkcLrWnukYdBTKRWNFUR"><img loading="lazy" decoding="async" src="cover-bigman.jpg" alt="Big Man on Campus cover art"><span>Big Man on Campus</span></a>
     </div>
     <div class="links" style="margin-top:14px">
       <a class="btn hero-link" href="https://open.spotify.com/artist/3WI9qDXXqOGAmvwxXw0eaD">
@@ -222,7 +244,7 @@
     <p class="note">Tap any cover — it opens right in Spotify. Nothing here can fail to load.</p>
   </section>
 
-  <section>
+  <section class="reveal">
     <h2>All the links</h2>
     <div class="links">
       <a class="btn hero-link" href="https://open.spotify.com/artist/3WI9qDXXqOGAmvwxXw0eaD">
@@ -252,7 +274,7 @@
     </div>
   </section>
 
-  <section>
+  <section class="reveal">
     <h2>The Discord</h2>
     <div class="card">
       <p><strong>AI Information Share</strong> — the home server: agents, experiments, and the Jo Nathan release wall. Every cover, video, and link lands in the 💿releases channel first — new drops included.</p>
@@ -263,7 +285,7 @@
     -->
   </section>
 
-  <section>
+  <section class="reveal">
     <h2>The Board</h2>
     <div class="board">
       <div class="post">
@@ -285,7 +307,7 @@
     </div>
   </section>
 
-  <section>
+  <section class="reveal">
     <h2>Videos</h2>
     <div class="video card">
       <iframe title="Biggest Man on Campus — visualizer"
@@ -303,7 +325,7 @@
     </div>
   </section>
 
-  <section>
+  <section class="reveal">
     <h2>Releases</h2>
     <div class="chips">
       <span class="chip new">FEELINGINYOURBONES</span>
@@ -319,7 +341,7 @@
     </div>
   </section>
 
-  <section>
+  <section class="reveal">
     <h2>The Crown Crew</h2>
     <div class="crew">
       <div class="mate"><div class="nm">💼 Big Man</div><div class="ds">Confident businessman. Green pinstripe suit, sunglasses, feet up on the desk.</div></div>
@@ -331,7 +353,7 @@
     </div>
   </section>
 
-  <section>
+  <section class="reveal">
     <h2>About</h2>
     <div class="card">
       <p>Jo Nathan is the music project of Johnathan Larroquette — guitarist and producer out of Louisiana, building a catalog that jumps from festival dubstep and trance to heavy guitar covers and raw acoustic songs.</p>
@@ -340,7 +362,7 @@
   </section>
 
   <footer>
-    <p><span class="crown2">👑</span> © 2026 Jo Nathan • JTLarroquetteMusic • Site v2.5</p>
+    <p><span class="crown2">👑</span> © 2026 Jo Nathan • JTLarroquetteMusic • Site v2.6</p>
     <p>Made in Louisiana. New music on the way.</p>
   </footer>
 
@@ -623,6 +645,22 @@
     lightStep(-1);
     markBeatButtons();
   }
+</script>
+
+<script>
+  (function(){
+    var els = document.querySelectorAll(".reveal");
+    if (!("IntersectionObserver" in window)) {
+      els.forEach(function(e){ e.classList.add("in"); });
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.08 });
+    els.forEach(function(e){ io.observe(e); });
+  })();
 </script>
 </body>
 </html>
