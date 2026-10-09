@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jo Nathan — Official Links, Music & Videos</title>
-<meta name="description" content="Jo Nathan — Louisiana musician. Dubstep, trance, electric guitar. Originals, covers, and the crown crew. All links, music, and videos in one place.">
-<meta property="og:title" content="Jo Nathan — Official Links, Music & Videos">
-<meta property="og:description" content="Dubstep • Trance • Electric Guitar. Originals & covers from Louisiana.">
+<title>Jo Nathan — Official Links, Music, Videos &amp; LIVE</title>
+<meta name="description" content="Jo Nathan — Louisiana musician. Dubstep, trance, electric guitar — originals, covers, and live TikTok performances. All links, music, and videos in one place.">
+<meta property="og:title" content="Jo Nathan — Official Links, Music, Videos & LIVE">
+<meta property="og:description" content="Dubstep • Trance • Electric Guitar. Originals, covers & live shows from Louisiana.">
 <meta property="og:image" content="https://jlarroquette.github.io/jo-nathan.jpg">
 <meta property="og:url" content="https://jlarroquette.github.io/">
 <meta name="theme-color" content="#0a0a14">
@@ -67,6 +67,15 @@
     background:linear-gradient(90deg,rgba(34,211,238,.18),rgba(232,121,249,.18));
     border-color:rgba(245,196,81,.5);
   }
+  .btn.live{
+    background:linear-gradient(90deg,rgba(254,44,85,.22),rgba(34,211,238,.14));
+    border-color:rgba(254,44,85,.8);
+    box-shadow:0 0 24px rgba(254,44,85,.35);
+    font-size:19px;
+  }
+  .btn.live:hover{border-color:#fe2c55;background:linear-gradient(90deg,rgba(254,44,85,.32),rgba(34,211,238,.20))}
+  .livedot{display:inline-block;width:12px;height:12px;border-radius:50%;background:#fe2c55;box-shadow:0 0 12px #fe2c55;animation:pulse 1.4s ease-in-out infinite;vertical-align:middle}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.78)}}
   .card{background:var(--panel);border:1px solid rgba(255,255,255,.09);border-radius:var(--radius);padding:18px}
   .card p{color:#d9d9e8}
   .card p + p{margin-top:10px}
@@ -102,6 +111,10 @@
   .bigplay{display:block;width:100%;background:linear-gradient(90deg,var(--cyan),var(--magenta));color:#0a0a14;font-size:19px;font-weight:900;letter-spacing:1px;border:0;border-radius:12px;padding:16px;cursor:pointer}
   #nowplaying{text-align:center;color:var(--gold);font-weight:700;margin:12px 0 2px;min-height:22px}
   #player{width:100%;margin-top:8px}
+  .streamrow{display:flex;gap:10px;margin-top:12px}
+  .streambtn{flex:1;text-align:center;text-decoration:none;font-weight:800;font-size:15px;letter-spacing:.3px;border-radius:10px;padding:12px 8px}
+  .streambtn.spotify{background:#1DB954;color:#0b0b12}
+  .streambtn.apple{background:#fa2d48;color:#fff}
   #viz{width:100%;height:auto;display:block;margin-top:10px;border-radius:10px;background:rgba(0,0,0,.35)}
   .picklist{margin-top:12px;display:flex;flex-direction:column;gap:8px}
   .pick{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:var(--panel);border:1px solid rgba(255,255,255,.09);border-radius:12px;padding:10px 12px;color:var(--ink);cursor:pointer;font-size:15.5px;font-weight:600;font-family:inherit}
@@ -139,6 +152,12 @@
     Originals &amp; covers from <b>Louisiana</b></p>
   </header>
 
+  <a class="btn live" href="https://www.tiktok.com/@jjthurty/live">
+    <span class="ic"><span class="livedot"></span></span>
+    <span>Watch me LIVE on TikTok<span class="sub">@jjthurty — originals, covers &amp; requests, live from Louisiana</span></span>
+    <span class="go">→</span>
+  </a>
+
   <section>
     <h2>Radio &amp; Reviewers — Start Here</h2>
     <div class="radiobox">
@@ -154,6 +173,10 @@
         <button class="pick" onclick="playTrack(4)"><img src="cover-bmoc2.jpg" alt="">Bigger Man on Campus 2<span class="dur">4:54</span></button>
         <button class="pick" onclick="playTrack(5)"><img src="cover-biggest.jpg" alt="">Biggest Man on Campus<span class="dur">5:11</span></button>
         <button class="pick" onclick="playTrack(6)"><img src="cover-bigman.jpg" alt="">Big Man on Campus<span class="dur">2:35</span></button>
+      </div>
+      <div class="streamrow">
+        <a class="streambtn spotify" href="https://open.spotify.com/artist/3WI9qDXXqOGAmvwxXw0eaD">🎧 Listen on Spotify</a>
+        <a class="streambtn apple" href="https://music.apple.com/us/artist/jo-nathan/6816315377">🍎 Apple Music</a>
       </div>
     </div>
   </section>
@@ -227,6 +250,17 @@
         <span class="ic">𝕏</span><span>X<span class="sub">Clips &amp; conversation</span></span><span class="go">→</span>
       </a>
     </div>
+  </section>
+
+  <section>
+    <h2>The Discord</h2>
+    <div class="card">
+      <p><strong>AI Information Share</strong> — the home server: agents, experiments, and the Jo Nathan release wall. Every cover, video, and link lands in the 💿releases channel first — new drops included.</p>
+    </div>
+    <!-- Discord server widget: renders once the widget is enabled in Server Settings. Guild 744598704840900738. -->
+    <!-- Discord widget iframe: RE-ENABLE only after the server widget is switched on server-side (checked Oct 8, 2026: widget endpoint returns 403 "Widget Disabled"; the new Discord settings layout has no widget toggle — flip it via the bot API with MANAGE_GUILD). Until then the iframe would show a dead "Widget Disabled" box, so it stays commented out and the invite card above carries the section.
+    <iframe src="https://discord.com/widget?id=744598704840900738&theme=dark" style="width:100%;height:420px;border:0;border-radius:12px;margin-top:12px" allowtransparency="true" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+    -->
   </section>
 
   <section>
@@ -306,7 +340,7 @@
   </section>
 
   <footer>
-    <p><span class="crown2">👑</span> © 2026 Jo Nathan • JTLarroquetteMusic • Site v2.4</p>
+    <p><span class="crown2">👑</span> © 2026 Jo Nathan • JTLarroquetteMusic • Site v2.5</p>
     <p>Made in Louisiana. New music on the way.</p>
   </footer>
 
