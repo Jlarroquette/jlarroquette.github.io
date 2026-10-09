@@ -160,6 +160,20 @@
     html{scroll-behavior:auto}
   }
   html{scroll-behavior:smooth}
+
+  .btn:active,.pick:active,.beatbtn:active{transform:scale(.99)}
+  .btn.live{animation:breathe 2.8s ease-in-out infinite}
+  @keyframes breathe{0%,100%{box-shadow:0 0 18px rgba(254,44,85,.28)}50%{box-shadow:0 0 34px rgba(254,44,85,.5)}}
+  .chips{justify-content:center}
+  .chip{font-size:13.5px;padding:6px 12px}
+  .video.card{padding:12px}
+  .video .cap{margin:8px 4px 2px}
+  body{background:
+      radial-gradient(900px 500px at 15% -5%, rgba(34,211,238,.11), transparent 60%),
+      radial-gradient(900px 500px at 85% 0%, rgba(232,121,249,.09), transparent 60%),
+      radial-gradient(700px 420px at 50% 108%, rgba(245,196,81,.07), transparent 60%),
+      var(--bg)}
+  @media (prefers-reduced-motion: reduce){ .btn.live{animation:none} }
 </style>
 </head>
 <body>
@@ -188,13 +202,13 @@
       <canvas id="viz" width="640" height="200"></canvas>
       <audio id="player" controls preload="none"></audio>
       <div class="picklist">
-        <button class="pick" onclick="playTrack(0)"><img src="cover-feeling.jpg" alt="">FEELINGINYOURBONES<span class="dur">1:38</span></button>
-        <button class="pick" onclick="playTrack(1)"><img src="cover-europa.jpg" alt="">Europa on Fire<span class="dur">3:28</span></button>
-        <button class="pick" onclick="playTrack(2)"><img src="cover-spacewastoid.jpg" alt="">SPACEWASTOID<span class="dur">3:03</span></button>
-        <button class="pick" onclick="playTrack(3)"><img src="cover-squiddub.jpg" alt="">SQUIDDUB<span class="dur">1:15</span></button>
-        <button class="pick" onclick="playTrack(4)"><img src="cover-bmoc2.jpg" alt="">Bigger Man on Campus 2<span class="dur">4:54</span></button>
-        <button class="pick" onclick="playTrack(5)"><img src="cover-biggest.jpg" alt="">Biggest Man on Campus<span class="dur">5:11</span></button>
-        <button class="pick" onclick="playTrack(6)"><img src="cover-bigman.jpg" alt="">Big Man on Campus<span class="dur">2:35</span></button>
+        <button class="pick" onclick="playTrack(0)"><img width="88" height="88" src="cover-feeling.jpg" alt="">FEELINGINYOURBONES<span class="dur">1:38</span></button>
+        <button class="pick" onclick="playTrack(1)"><img width="88" height="88" src="cover-europa.jpg" alt="">Europa on Fire<span class="dur">3:28</span></button>
+        <button class="pick" onclick="playTrack(2)"><img width="88" height="88" src="cover-spacewastoid.jpg" alt="">SPACEWASTOID<span class="dur">3:03</span></button>
+        <button class="pick" onclick="playTrack(3)"><img width="88" height="88" src="cover-squiddub.jpg" alt="">SQUIDDUB<span class="dur">1:15</span></button>
+        <button class="pick" onclick="playTrack(4)"><img width="88" height="88" src="cover-bmoc2.jpg" alt="">Bigger Man on Campus 2<span class="dur">4:54</span></button>
+        <button class="pick" onclick="playTrack(5)"><img width="88" height="88" src="cover-biggest.jpg" alt="">Biggest Man on Campus<span class="dur">5:11</span></button>
+        <button class="pick" onclick="playTrack(6)"><img width="88" height="88" src="cover-bigman.jpg" alt="">Big Man on Campus<span class="dur">2:35</span></button>
       </div>
       <div class="streamrow">
         <a class="streambtn spotify" href="https://open.spotify.com/artist/3WI9qDXXqOGAmvwxXw0eaD">🎧 Listen on Spotify</a>
@@ -225,18 +239,15 @@
   <section class="reveal">
     <h2>Listen</h2>
     <div class="covers">
-      <a class="tile" href="https://open.spotify.com/playlist/4CCkcLrWnukYdBTKRWNFUR"><img loading="lazy" decoding="async" src="cover-feeling.jpg" alt="FEELINGINYOURBONES cover art"><span>FEELINGINYOURBONES</span></a>
-      <a class="tile" href="https://open.spotify.com/playlist/4CCkcLrWnukYdBTKRWNFUR"><img loading="lazy" decoding="async" src="cover-europa.jpg" alt="Europa on Fire cover art"><span>Europa on Fire</span></a>
-      <a class="tile" href="https://open.spotify.com/playlist/4CCkcLrWnukYdBTKRWNFUR"><img loading="lazy" decoding="async" src="cover-spacewastoid.jpg" alt="SPACEWASTOID cover art"><span>SPACEWASTOID</span></a>
-      <a class="tile" href="https://open.spotify.com/playlist/4CCkcLrWnukYdBTKRWNFUR"><img loading="lazy" decoding="async" src="cover-squiddub.jpg" alt="SQUIDDUB cover art"><span>SQUIDDUB</span></a>
-      <a class="tile" href="https://open.spotify.com/playlist/4CCkcLrWnukYdBTKRWNFUR"><img loading="lazy" decoding="async" src="cover-bmoc2.jpg" alt="Bigger Man on Campus 2 cover art"><span>Bigger Man on Campus 2</span></a>
-      <a class="tile" href="https://open.spotify.com/playlist/4CCkcLrWnukYdBTKRWNFUR"><img loading="lazy" decoding="async" src="cover-biggest.jpg" alt="Biggest Man on Campus cover art"><span>Biggest Man on Campus</span></a>
-      <a class="tile" href="https://open.spotify.com/playlist/4CCkcLrWnukYdBTKRWNFUR"><img loading="lazy" decoding="async" src="cover-bigman.jpg" alt="Big Man on Campus cover art"><span>Big Man on Campus</span></a>
+      <a class="tile" href="https://open.spotify.com/playlist/4CCkcLrWnukYdBTKRWNFUR"><img loading="lazy" decoding="async" width="300" height="300" src="cover-feeling.jpg" alt="FEELINGINYOURBONES cover art"><span>FEELINGINYOURBONES</span></a>
+      <a class="tile" href="https://open.spotify.com/playlist/4CCkcLrWnukYdBTKRWNFUR"><img loading="lazy" decoding="async" width="300" height="300" src="cover-europa.jpg" alt="Europa on Fire cover art"><span>Europa on Fire</span></a>
+      <a class="tile" href="https://open.spotify.com/playlist/4CCkcLrWnukYdBTKRWNFUR"><img loading="lazy" decoding="async" width="300" height="300" src="cover-spacewastoid.jpg" alt="SPACEWASTOID cover art"><span>SPACEWASTOID</span></a>
+      <a class="tile" href="https://open.spotify.com/playlist/4CCkcLrWnukYdBTKRWNFUR"><img loading="lazy" decoding="async" width="300" height="300" src="cover-squiddub.jpg" alt="SQUIDDUB cover art"><span>SQUIDDUB</span></a>
+      <a class="tile" href="https://open.spotify.com/playlist/4CCkcLrWnukYdBTKRWNFUR"><img loading="lazy" decoding="async" width="300" height="300" src="cover-bmoc2.jpg" alt="Bigger Man on Campus 2 cover art"><span>Bigger Man on Campus 2</span></a>
+      <a class="tile" href="https://open.spotify.com/playlist/4CCkcLrWnukYdBTKRWNFUR"><img loading="lazy" decoding="async" width="300" height="300" src="cover-biggest.jpg" alt="Biggest Man on Campus cover art"><span>Biggest Man on Campus</span></a>
+      <a class="tile" href="https://open.spotify.com/playlist/4CCkcLrWnukYdBTKRWNFUR"><img loading="lazy" decoding="async" width="300" height="300" src="cover-bigman.jpg" alt="Big Man on Campus cover art"><span>Big Man on Campus</span></a>
     </div>
     <div class="links" style="margin-top:14px">
-      <a class="btn hero-link" href="https://open.spotify.com/artist/3WI9qDXXqOGAmvwxXw0eaD">
-        <span class="ic">🎧</span><span>Open in Spotify<span class="sub">Artist page — every single</span></span><span class="go">→</span>
-      </a>
       <a class="btn" href="https://open.spotify.com/playlist/4CCkcLrWnukYdBTKRWNFUR">
         <span class="ic">📜</span><span>Complete Collection<span class="sub">The full playlist on Spotify</span></span><span class="go">→</span>
       </a>
@@ -362,7 +373,7 @@
   </section>
 
   <footer>
-    <p><span class="crown2">👑</span> © 2026 Jo Nathan • JTLarroquetteMusic • Site v2.6</p>
+    <p><span class="crown2">👑</span> © 2026 Jo Nathan • JTLarroquetteMusic • Site v2.7</p>
     <p>Made in Louisiana. New music on the way.</p>
   </footer>
 
