@@ -174,6 +174,15 @@
       radial-gradient(700px 420px at 50% 108%, rgba(245,196,81,.07), transparent 60%),
       var(--bg)}
   @media (prefers-reduced-motion: reduce){ .btn.live{animation:none} }
+  /* v2.9 polish: calmer motion, clearer keyboard focus */
+  @media (prefers-reduced-motion: no-preference){ html{scroll-behavior:smooth} }
+  @media (prefers-reduced-motion: reduce){
+    .livedot{animation:none}
+    .btn,.tile img{transition:none}
+  }
+  a:focus-visible,button:focus-visible,input:focus-visible{
+    outline:2px solid var(--cyan);outline-offset:3px;border-radius:6px;
+  }
 </style>
 </head>
 <body>
@@ -423,7 +432,7 @@
   </section>
 
   <footer>
-    <p><span class="crown2">👑</span> © 2026 Jo Nathan • JTLarroquetteMusic • Site v2.8</p>
+    <p><span class="crown2">👑</span> © 2026 Jo Nathan • JTLarroquetteMusic • Site v2.9</p>
     <p>Made in Louisiana. New music on the way.</p>
   </footer>
 
