@@ -16,6 +16,7 @@
 <meta property="og:image" content="https://jlarroquette.github.io/jo-nathan.jpg">
 <meta property="og:url" content="https://jlarroquette.github.io/">
 <meta name="theme-color" content="#0a0a14">
+<link rel="icon" href="jo-nathan.jpg" type="image/jpeg">
 <style>
   :root{
     --bg:#0a0a14; --panel:#12121f; --panel2:#17172a;
@@ -51,21 +52,51 @@
   }
   .tagline{color:var(--dim);font-size:16px;margin-top:6px}
   .tagline b{color:var(--gold);font-weight:600}
-  .countdown{
-    text-align:center;background:var(--panel);border:1px solid rgba(245,196,81,.35);
-    border-radius:var(--radius);padding:22px 18px;margin-bottom:28px;
+  .feature{
+    text-align:center;background:var(--panel);border:1px solid rgba(245,196,81,.45);
+    border-radius:var(--radius);padding:22px 18px 20px;margin-top:0;margin-bottom:28px;
     box-shadow:0 0 34px rgba(245,196,81,.12);
   }
-  .cd-label{font-size:19px;font-weight:800;letter-spacing:.3px}
-  .cd-sub{color:var(--dim);font-size:14px;margin-top:4px}
-  .cd-timer{display:flex;justify-content:center;gap:18px;margin:16px 0 14px}
-  .cd-unit b{display:block;font-size:38px;font-weight:900;font-variant-numeric:tabular-nums;
-    background:linear-gradient(90deg,var(--cyan),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
-  .cd-unit i{display:block;font-style:normal;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--dim)}
-  .cd-link{color:var(--cyan);font-weight:600;text-decoration:none;font-size:15px}
-  .cd-link:hover{text-decoration:underline}
-  .cd-out{font-size:22px;font-weight:800;color:var(--gold)}
-  @media (max-width:520px){ .cd-timer{gap:10px} .cd-unit b{font-size:30px} }
+  .feature-kicker{
+    display:inline-block;background:var(--gold);color:#0a0a14;
+    font-size:12px;font-weight:800;letter-spacing:2.4px;text-transform:uppercase;
+    border-radius:999px;padding:4px 12px;
+  }
+  .feature h2{
+    display:block;margin:12px 0 0;font-size:28px;font-weight:900;letter-spacing:.2px;
+    text-transform:none;color:var(--ink);line-height:1.15;
+  }
+  .feature h2::after{content:none}
+  .feature-sub{color:var(--dim);font-size:15px;margin-top:6px}
+  .feature-shotlink{display:block;margin-top:14px;border-radius:12px}
+  .feature-shot{
+    width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;display:block;
+    border-radius:12px;border:1px solid rgba(255,255,255,.12);background:var(--panel2);
+  }
+  .feature-cta{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    margin-top:14px;padding:14px 18px;width:100%;max-width:420px;
+    background:linear-gradient(90deg,var(--cyan),var(--magenta));color:#0a0a14;
+    font-size:17px;font-weight:900;letter-spacing:.4px;text-decoration:none;border-radius:12px;
+  }
+  .feature-cta:hover{filter:brightness(1.06)}
+  /* Fan list stays hidden until the Kit embed is pasted in and
+     the class "signup-pending" is removed from #join-the-list. */
+  .signup-pending{display:none !important}
+  .signup{margin-bottom:28px}
+  .signupbox{
+    background:linear-gradient(135deg,rgba(34,211,238,.12),rgba(232,121,249,.12));
+    border:1px solid rgba(245,196,81,.45);border-radius:var(--radius);padding:18px;
+  }
+  .signup-headline{font-size:26px;font-weight:900;letter-spacing:.2px;line-height:1.2}
+  .signup-sub{color:var(--dim);margin-top:6px}
+  .signup-embed{margin-top:14px}
+  .signup-embed form,.signup-embed iframe,.signup-embed .formkit-form{max-width:100% !important}
+  @media (max-width:520px){
+    .feature h2{font-size:22px}
+    .feature{padding:18px 14px 16px}
+    .signup-headline{font-size:22px}
+  }
   section{margin-top:30px}
   h2{
     font-size:14px;letter-spacing:3px;text-transform:uppercase;color:var(--dim);
@@ -104,6 +135,8 @@
   .video{margin-bottom:14px}
   .video iframe{aspect-ratio:16/9;height:auto}
   .video .cap{font-size:13px;color:var(--dim);margin-top:6px}
+  .video .cap a{color:var(--cyan);font-weight:600;text-decoration:none}
+  .video .cap a:hover{text-decoration:underline}
   .chips{display:flex;flex-wrap:wrap;gap:8px}
   .chip{
     background:var(--panel2);border:1px solid rgba(255,255,255,.1);
@@ -138,9 +171,10 @@
   .streambtn.apple{background:#fa2d48;color:#fff}
   #viz{width:100%;height:auto;display:block;margin-top:10px;border-radius:10px;background:rgba(0,0,0,.35)}
   .picklist{margin-top:12px;display:flex;flex-direction:column;gap:8px}
-  .pick{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:var(--panel);border:1px solid rgba(255,255,255,.09);border-radius:12px;padding:10px 12px;color:var(--ink);cursor:pointer;font-size:15.5px;font-weight:600;font-family:inherit}
-  .pick img{width:44px;height:44px;border-radius:8px;object-fit:cover}
-  .pick .dur{margin-left:auto;color:var(--dim);font-weight:400;font-size:13.5px}
+  .pick{display:flex;align-items:center;gap:12px;width:100%;min-width:0;text-align:left;background:var(--panel);border:1px solid rgba(255,255,255,.09);border-radius:12px;padding:10px 12px;color:var(--ink);cursor:pointer;font-size:15.5px;font-weight:600;font-family:inherit}
+  .pick img{width:44px;height:44px;border-radius:8px;object-fit:cover;flex:none}
+  .pick .dur{margin-left:auto;color:var(--dim);font-weight:400;font-size:13.5px;flex:none}
+  .pick .nm{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .pick.active{border-color:var(--gold)}
   .beatbox{background:var(--panel);border:1px solid rgba(255,255,255,.09);border-radius:var(--radius);padding:18px}
   .beatbtns{display:flex;flex-direction:column;gap:10px}
@@ -212,17 +246,37 @@
     Originals &amp; covers from <b>Louisiana</b></p>
   </header>
 
-  <div class="countdown reveal" id="places-countdown">
-    <div class="cd-label">🎬 A Lot of Places to Hide — Official Video</div>
-    <div class="cd-sub" id="cd-sub">Full video drops Friday, Oct 30 at 12:00 PM Central</div>
-    <div class="cd-timer" id="cd-timer" role="timer" aria-live="off">
-      <span class="cd-unit"><b id="cd-d">–</b><i>Days</i></span>
-      <span class="cd-unit"><b id="cd-h">–</b><i>Hours</i></span>
-      <span class="cd-unit"><b id="cd-m">–</b><i>Minutes</i></span>
-      <span class="cd-unit"><b id="cd-s">–</b><i>Seconds</i></span>
+  <section class="feature reveal" id="places-video" aria-labelledby="places-heading">
+    <p class="feature-kicker">Out now</p>
+    <h2 id="places-heading">A Lot of Places to Hide</h2>
+    <p class="feature-sub">The official music video is up on YouTube.</p>
+    <a class="feature-shotlink" href="https://www.youtube.com/watch?v=RfZUsYZt1jM">
+      <img class="feature-shot" src="https://i.ytimg.com/vi/RfZUsYZt1jM/maxresdefault.jpg" width="1280" height="720" alt="A Lot of Places to Hide — official music video">
+    </a>
+    <a class="feature-cta" href="https://www.youtube.com/watch?v=RfZUsYZt1jM">▶ Watch on YouTube</a>
+  </section>
+
+  <section class="reveal signup signup-pending" id="join-the-list" aria-labelledby="join-heading">
+    <!--
+      FAN LIST — hidden on purpose.
+      The form is a Kit (ConvertKit) embed that is not set up yet.
+      To publish this section, do both of these and nothing else:
+        1. Paste the Kit embed snippet between the KIT EMBED markers below.
+        2. Remove the class "signup-pending" from this <section>.
+      While "signup-pending" is on the section, the whole block stays hidden
+      so an empty form never shows on the live site.
+    -->
+    <h2 id="join-heading">Join the list</h2>
+    <div class="signupbox">
+      <p class="signup-headline">Get a free unreleased track</p>
+      <p class="signup-sub">Join the list and I'll send one that isn't out yet.</p>
+      <div class="signup-embed" id="kit-embed">
+        <!-- KIT EMBED START: paste the Kit (ConvertKit) embed snippet below this line. -->
+
+        <!-- KIT EMBED END -->
+      </div>
     </div>
-    <a class="cd-link" href="https://open.spotify.com/artist/3WI9qDXXqOGAmvwxXw0eaD">🎧 Listen on Spotify while you wait →</a>
-  </div>
+  </section>
 
   <a class="btn live reveal" href="https://www.tiktok.com/@jjthurty/live">
     <span class="ic"><span class="livedot"></span></span>
@@ -238,13 +292,13 @@
       <canvas id="viz" width="640" height="200"></canvas>
       <audio id="player" controls preload="none"></audio>
       <div class="picklist">
-        <button class="pick" onclick="playTrack(0)"><img width="88" height="88" src="cover-feeling.jpg" alt="">FEELINGINYOURBONES<span class="dur">1:38</span></button>
-        <button class="pick" onclick="playTrack(1)"><img width="88" height="88" src="cover-europa.jpg" alt="">Europa on Fire<span class="dur">3:28</span></button>
-        <button class="pick" onclick="playTrack(2)"><img width="88" height="88" src="cover-spacewastoid.jpg" alt="">SPACEWASTOID<span class="dur">3:03</span></button>
-        <button class="pick" onclick="playTrack(3)"><img width="88" height="88" src="cover-squiddub.jpg" alt="">SQUIDDUB<span class="dur">1:15</span></button>
-        <button class="pick" onclick="playTrack(4)"><img width="88" height="88" src="cover-bmoc2.jpg" alt="">Bigger Man on Campus 2<span class="dur">4:54</span></button>
-        <button class="pick" onclick="playTrack(5)"><img width="88" height="88" src="cover-biggest.jpg" alt="">Biggest Man on Campus<span class="dur">5:11</span></button>
-        <button class="pick" onclick="playTrack(6)"><img width="88" height="88" src="cover-bigman.jpg" alt="">Big Man on Campus<span class="dur">2:35</span></button>
+        <button class="pick" onclick="playTrack(0)"><img width="88" height="88" src="cover-feeling.jpg" alt=""><span class="nm">FEELINGINYOURBONES</span><span class="dur">1:38</span></button>
+        <button class="pick" onclick="playTrack(1)"><img width="88" height="88" src="cover-europa.jpg" alt=""><span class="nm">Europa on Fire</span><span class="dur">3:28</span></button>
+        <button class="pick" onclick="playTrack(2)"><img width="88" height="88" src="cover-spacewastoid.jpg" alt=""><span class="nm">SPACEWASTOID</span><span class="dur">3:03</span></button>
+        <button class="pick" onclick="playTrack(3)"><img width="88" height="88" src="cover-squiddub.jpg" alt=""><span class="nm">SQUIDDUB</span><span class="dur">1:15</span></button>
+        <button class="pick" onclick="playTrack(4)"><img width="88" height="88" src="cover-bmoc2.jpg" alt=""><span class="nm">Bigger Man on Campus 2</span><span class="dur">4:54</span></button>
+        <button class="pick" onclick="playTrack(5)"><img width="88" height="88" src="cover-biggest.jpg" alt=""><span class="nm">Biggest Man on Campus</span><span class="dur">5:11</span></button>
+        <button class="pick" onclick="playTrack(6)"><img width="88" height="88" src="cover-bigman.jpg" alt=""><span class="nm">Big Man on Campus</span><span class="dur">2:35</span></button>
       </div>
       <div class="streamrow">
         <a class="streambtn spotify" href="https://open.spotify.com/artist/3WI9qDXXqOGAmvwxXw0eaD">🎧 Listen on Spotify</a>
@@ -384,6 +438,13 @@
 
   <section class="reveal">
     <h2>Videos</h2>
+    <div class="video card">
+      <iframe title="A Lot of Places to Hide — official music video"
+        src="https://www.youtube-nocookie.com/embed/RfZUsYZt1jM"
+        loading="lazy" allowfullscreen
+        allow="accelerometer; encrypted-media; picture-in-picture"></iframe>
+      <p class="cap">A Lot of Places to Hide — official music video · <a href="https://www.youtube.com/watch?v=RfZUsYZt1jM">Watch on YouTube</a></p>
+    </div>
     <div class="video card">
       <iframe title="SPACEWASTOID — visualizer"
         src="https://www.youtube-nocookie.com/embed/UdfKXvVKPoo"
@@ -760,35 +821,5 @@
   })();
 </script>
 
-<script>
-  /* Places to Hide video countdown — target: Fri Oct 30, 2026, 12:00 PM Central (CDT, UTC-5). */
-  (function(){
-    var target = new Date(Date.UTC(2026, 9, 30, 17, 0, 0));
-    var box = document.getElementById("places-countdown");
-    if(!box) return;
-    var dEl = document.getElementById("cd-d"), hEl = document.getElementById("cd-h"),
-        mEl = document.getElementById("cd-m"), sEl = document.getElementById("cd-s"),
-        sub = document.getElementById("cd-sub"), timer = document.getElementById("cd-timer");
-    function pad(n){ return (n < 10 ? "0" : "") + n; }
-    function tick(){
-      var diff = target.getTime() - Date.now();
-      if(diff <= 0){
-        clearInterval(iv);
-        sub.textContent = "The full official video is live!";
-        timer.innerHTML = '<div class="cd-out">🎬 OUT NOW — A Lot of Places to Hide</div>';
-        var link = box.querySelector(".cd-link");
-        if(link){ link.textContent = "▶ Watch on the Jo Nathan YouTube channel →"; link.href = "https://www.youtube.com/@JTLarroquetteMusic"; }
-        return;
-      }
-      var total = Math.floor(diff / 1000);
-      dEl.textContent = Math.floor(total / 86400);
-      hEl.textContent = pad(Math.floor(total % 86400 / 3600));
-      mEl.textContent = pad(Math.floor(total % 3600 / 60));
-      sEl.textContent = pad(total % 60);
-    }
-    var iv = setInterval(tick, 1000);
-    tick();
-  })();
-</script>
 </body>
 </html>
